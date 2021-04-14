@@ -10,6 +10,35 @@ header {
 }
 
 h2 {
-  font-size: 26px;
-  margin: 10px 10px 10px 10px;
+  font-size: 32px;
+  margin: 4px 14px 4px 14px;
 }
+
+a {
+  vertical-align: middle;
+  margin: auto 16px auto 16px;
+  color: #F9F9F9;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 20px;
+  background: none;
+  border: 2px solid #B2E6D4;
+  border-radius: 4px;
+  text-decoration: none;
+  transition-duration: 0.2s;
+}
+
+a:hover {
+  background-color: #ECA400;
+  border: 2px solid #040113;
+  color: #040113;
+}
+
+a:active {
+  filter: brightness(75%);
+}
+
+a.p-2 {
+  padding: 4px 30px 4px 30px !important;
+}
+
+/*.btn-outline-**/

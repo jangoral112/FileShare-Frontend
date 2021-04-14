@@ -1,0 +1,17 @@
+.content {
+  max-width: 750px;
+  margin: 40px 30% auto 12%;
+  border: 2px dashed #B2E6D4;
+  border-radius: 8px;
+  padding: 5px 20px 10px 20px;
+}
+
+.content h1 {
+  font-size: 650%;
+}
+
+.content p {
+  margin-left: 30px;
+  margin-top: 20px;
+  font-size: 250%;
+}
