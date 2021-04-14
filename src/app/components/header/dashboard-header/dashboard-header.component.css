@@ -1,0 +1,15 @@
+header {
+  background-color: #1F0B22;
+  border-bottom: 2px solid #B2E6D4;
+  position: relative;
+  overflow: hidden;
+  top: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  font-size: 26px;
+  margin: 10px 10px 10px 10px;
+}
