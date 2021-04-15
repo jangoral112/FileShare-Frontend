@@ -10,6 +10,7 @@
   border: 2px dashed #B2E6D4;
   border-radius: 8px;
   padding: 15px 35px 10px 35px;
+  background-color: #1F0B22;
 }
 
 .sign-in-form-button {
@@ -45,4 +46,13 @@
 .form-control:focus {
   border-color: #ECA400 !important;
   box-shadow: 0 0 0 0.15rem rgba(236, 164, 0, 1) !important;
+}
+
+.alert-danger {
+  font-size: 12px;
+  padding: 5px 5px 5px 5px;
+  margin-top: 5px;
+  background-color: #B10F2E;
+  border: 3px solid #040113;
+  color: #F9F9F9;
 }

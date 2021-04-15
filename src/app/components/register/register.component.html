@@ -1,26 +1,64 @@
 <div>
   <app-home-header></app-home-header>
   <div class="container">
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()" [formGroup]="userRegistrationForm">
 
       <div class="mb-3">
         <label for="username">Username</label>
-        <input [(ngModel)]="userRegistrationForm.username" name="username" id="username" type="text" class="form-control" placeholder="Enter your username">
+        <input formControlName="username" id="username" type="text" class="form-control" placeholder="Enter your username" required>
+        <div *ngIf="username.invalid && submitted == true" class="alert alert-danger">
+          <div *ngIf="username.errors.required">
+            Username is required.
+          </div>
+          <div *ngIf="username.errors.minlength">
+            Username must be at least 3 characters long
+          </div>
+          <div *ngIf="username.errors.maxlength">
+            Username can't be longer than 20 characters
+          </div>
+        </div>
       </div>
 
       <div class="mb-3">
         <label for="email">Email</label>
-        <input [(ngModel)]="userRegistrationForm.email" name="email"  id="email" type="text" class="form-control" placeholder="Enter your email">
+        <input formControlName="email"  id="email" type="text" class="form-control" placeholder="Enter your email">
+        <div *ngIf="email.invalid && submitted == true" class="alert alert-danger">
+          <div *ngIf="email.errors.required">
+            Email is required.
+          </div>
+          <div *ngIf="email.errors.email">
+            Email is invalid
+          </div>
+        </div>
       </div>
 
       <div class="mb-3">
         <label for="password">Password</label>
-        <input [(ngModel)]="userRegistrationForm.password" name="password" id="password" type="password" class="form-control" placeholder="Enter your password">
+        <input formControlName="password" id="password" type="password" class="form-control" placeholder="Enter your password">
+        <div *ngIf="password.invalid && submitted == true" class="alert alert-danger">
+          <div *ngIf="password.errors.required">
+            Password is required.
+          </div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 8 characters long
+          </div>
+          <div *ngIf="username.errors.mustMatch">
+            Passwords must match
+          </div>
+        </div>
       </div>
 
       <div class="mb-4">
         <label for="password-confirm">Confirm Password</label>
-        <input [(ngModel)]="userRegistrationForm.passwordConfirm" name="passwordConfirm" id="password-confirm" type="password" class="form-control" placeholder="Confirm your password">
+        <input formControlName="passwordConfirm" id="password-confirm" type="password" class="form-control" placeholder="Confirm your password">
+        <div *ngIf="passwordConfirm.invalid && submitted == true" class="alert alert-danger">
+          <div *ngIf="passwordConfirm.errors.required">
+            Password confirmation is required.
+          </div>
+          <div *ngIf="passwordConfirm.errors.mustMatch">
+            Passwords must match
+          </div>
+        </div>
       </div>
 
       <div class="mb-3">
