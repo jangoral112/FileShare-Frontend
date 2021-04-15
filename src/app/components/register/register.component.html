@@ -1,7 +1,33 @@
 <div>
   <app-home-header></app-home-header>
-  <div class="content">
-    <h1>Register</h1>
+  <div class="container">
+    <form (ngSubmit)="onSubmit()">
+
+      <div class="mb-3">
+        <label for="username">Username</label>
+        <input [(ngModel)]="userRegistrationForm.username" name="username" id="username" type="text" class="form-control" placeholder="Enter your username">
+      </div>
+
+      <div class="mb-3">
+        <label for="email">Email</label>
+        <input [(ngModel)]="userRegistrationForm.email" name="email"  id="email" type="text" class="form-control" placeholder="Enter your email">
+      </div>
+
+      <div class="mb-3">
+        <label for="password">Password</label>
+        <input [(ngModel)]="userRegistrationForm.password" name="password" id="password" type="password" class="form-control" placeholder="Enter your password">
+      </div>
+
+      <div class="mb-4">
+        <label for="password-confirm">Confirm Password</label>
+        <input [(ngModel)]="userRegistrationForm.passwordConfirm" name="passwordConfirm" id="password-confirm" type="password" class="form-control" placeholder="Confirm your password">
+      </div>
+
+      <div class="mb-3">
+        <button class="sign-in-form-button" type="submit">Sign in</button>
+      </div>
+
+    </form>
   </div>
   <app-footer></app-footer>
 </div>
