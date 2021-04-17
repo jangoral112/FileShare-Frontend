@@ -6,7 +6,7 @@
       <div class="mb-3">
         <label for="username">Username</label>
         <input formControlName="username" id="username" type="text" class="form-control" placeholder="Enter your username" required>
-        <div *ngIf="username.invalid && submitted == true" class="alert alert-danger">
+        <div *ngIf="username.invalid && submitClicked == true" class="alert alert-danger">
           <div *ngIf="username.errors.required">
             Username is required.
           </div>
@@ -22,7 +22,7 @@
       <div class="mb-3">
         <label for="email">Email</label>
         <input formControlName="email"  id="email" type="text" class="form-control" placeholder="Enter your email">
-        <div *ngIf="email.invalid && submitted == true" class="alert alert-danger">
+        <div *ngIf="email.invalid && submitClicked == true" class="alert alert-danger">
           <div *ngIf="email.errors.required">
             Email is required.
           </div>
@@ -35,7 +35,7 @@
       <div class="mb-3">
         <label for="password">Password</label>
         <input formControlName="password" id="password" type="password" class="form-control" placeholder="Enter your password">
-        <div *ngIf="password.invalid && submitted == true" class="alert alert-danger">
+        <div *ngIf="password.invalid && submitClicked == true" class="alert alert-danger">
           <div *ngIf="password.errors.required">
             Password is required.
           </div>
@@ -51,7 +51,7 @@
       <div class="mb-4">
         <label for="password-confirm">Confirm Password</label>
         <input formControlName="passwordConfirm" id="password-confirm" type="password" class="form-control" placeholder="Confirm your password">
-        <div *ngIf="passwordConfirm.invalid && submitted == true" class="alert alert-danger">
+        <div *ngIf="passwordConfirm.invalid && submitClicked == true" class="alert alert-danger">
           <div *ngIf="passwordConfirm.errors.required">
             Password confirmation is required.
           </div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserRegistrationForm } from '../../models/form/UserRegistrationForm';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import {MustMatch} from '../validators/must-match';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MustMatch } from '../../validators/must-match';
+import { UserService } from '../../services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -10,13 +11,12 @@ import {MustMatch} from '../validators/must-match';
 })
 export class RegisterComponent implements OnInit {
 
-  submitted: boolean;
-
-  // userRegistrationForm = new UserRegistrationForm();
+  // In purpose of form error handling
+  submitClicked: boolean;
 
   userRegistrationForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.userRegistrationForm = this.formBuilder.group({
@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
       // updateOn: 'submit',
       validators: MustMatch('password', 'passwordConfirm')
     });
-    this.submitted = false;
+    this.submitClicked = false;
   }
 
   validatePasswordInputs(password: string, passwordConfirmation: string): boolean {
@@ -56,7 +56,16 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    // console.log(this.userRegistrationForm);
-    this.submitted = true;
+    if(this.userRegistrationForm.valid) {
+      this.userService.registerUser(this.username.value, this.email.value, this.password.value)
+        .subscribe(
+          response => {
+          this.toastr.success(response.message);
+        },
+          error => {
+            this.toastr.error(error.error.message, error.status);
+        });
+    }
+    this.submitClicked = true;
   }
 }
