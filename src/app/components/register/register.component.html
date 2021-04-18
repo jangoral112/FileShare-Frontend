@@ -1,5 +1,5 @@
 <div>
-  <app-home-header></app-home-header>
+  <app-register-header></app-register-header>
   <div class="container">
     <form (ngSubmit)="onSubmit()" [formGroup]="userRegistrationForm">
 
@@ -42,7 +42,7 @@
           <div *ngIf="password.errors.minlength">
             Password must be at least 8 characters long
           </div>
-          <div *ngIf="username.errors.mustMatch">
+          <div *ngIf="password.errors.mustMatch">
             Passwords must match
           </div>
         </div>

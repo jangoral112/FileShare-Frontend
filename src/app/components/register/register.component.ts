@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MustMatch } from '../../validators/must-match';
-import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -29,10 +29,6 @@ export class RegisterComponent implements OnInit {
       validators: MustMatch('password', 'passwordConfirm')
     });
     this.submitClicked = false;
-  }
-
-  validatePasswordInputs(password: string, passwordConfirmation: string): boolean {
-    return password === passwordConfirmation;
   }
 
   // tslint:disable-next-line:typedef

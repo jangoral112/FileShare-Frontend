@@ -1,0 +1,36 @@
+<div>
+  <app-login-header></app-login-header>
+  <div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="userLoginForm">
+
+      <div class="mb-3">
+        <label for="email">Email</label>
+        <input formControlName="email"  id="email" type="text" class="form-control" placeholder="Enter your email">
+        <div *ngIf="email.invalid && submitClicked == true" class="alert alert-danger">
+          <div *ngIf="email.errors.required">
+            Email is required.
+          </div>
+          <div *ngIf="email.errors.email">
+            Email is invalid
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password">Password</label>
+        <input formControlName="password" id="password" type="password" class="form-control" placeholder="Enter your password">
+        <div *ngIf="password.invalid && submitClicked == true" class="alert alert-danger">
+          <div *ngIf="password.errors.required">
+            Password is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <button class="log-in-form-button" type="submit">Log in</button>
+      </div>
+
+    </form>
+  </div>
+  <app-footer></app-footer>
+</div>

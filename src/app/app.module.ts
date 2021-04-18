@@ -12,6 +12,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeHeaderComponent } from './components/header/home-header/home-header.component';
 import { DashboardHeaderComponent } from './components/header/dashboard-header/dashboard-header.component';
 import { RegisterComponent } from './components/register/register.component';
+import { RegisterHeaderComponent } from './components/header/register-header/register-header.component';
+import { LoginComponent } from './components/login/login.component';
+import { LoginHeaderComponent } from './components/header/login-header/login-header.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { RegisterComponent } from './components/register/register.component';
     FooterComponent,
     HomeHeaderComponent,
     DashboardHeaderComponent,
-    RegisterComponent
+    RegisterComponent,
+    RegisterHeaderComponent,
+    LoginComponent,
+    LoginHeaderComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
