@@ -3,12 +3,15 @@ import {SessionStorageService} from './session-storage.service';
 import {HttpClient} from '@angular/common/http';
 import {MessageResponse} from '../models/dto/MessageResponse';
 import {UserLoginRequest} from '../models/dto/UserLoginRequest';
+import {JwtHelperService} from '@auth0/angular-jwt';
 import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  jwtHelper = new JwtHelperService();
 
   baseUrl = 'http://localhost:8081/authUser';
 
@@ -26,5 +29,10 @@ export class AuthService {
     )
 
     return responseObservable;
+  }
+
+  public isAuthenticated(): boolean {
+    const token = this.sessionStorageService.getAuthToken();
+    return token == null ? false : !this.jwtHelper.isTokenExpired(token.replace('Bearer ', ''));
   }
 }

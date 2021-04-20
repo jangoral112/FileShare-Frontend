@@ -7,15 +7,15 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeHeaderComponent } from './components/header/home-header/home-header.component';
 import { DashboardHeaderComponent } from './components/header/dashboard-header/dashboard-header.component';
 import { RegisterComponent } from './components/register/register.component';
-import { RegisterHeaderComponent } from './components/header/register-header/register-header.component';
 import { LoginComponent } from './components/login/login.component';
-import { LoginHeaderComponent } from './components/header/login-header/login-header.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 
 @NgModule({
   declarations: [
@@ -25,9 +25,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     HomeHeaderComponent,
     DashboardHeaderComponent,
     RegisterComponent,
-    RegisterHeaderComponent,
     LoginComponent,
-    LoginHeaderComponent,
     DashboardComponent
   ],
   imports: [
@@ -38,7 +36,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    NgbModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

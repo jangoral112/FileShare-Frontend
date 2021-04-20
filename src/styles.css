@@ -1,11 +1,37 @@
 @import "~bootstrap/dist/css/bootstrap-grid.min.css";
 
-body {
-  margin: 0;
+:root {
+  --main-background-color: #040113;
+  --secondary-background-color: #1F0B22;
+  --font-color: #F9F9F9;
+  --border-color: #B2E6D4;
+  --active-color: #ECA400;
+}
+
+app-root {
+  height: 100%;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
   padding: 0;
+  margin: 0;
+}
+
+body {
+  height: 100%;
   font-family: 'Quicksand', sans-serif;
-  background-color: #040113;
-  color: #F9F9F9;
+  background-color: var(--main-background-color);
+  color: var(--font-color);
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .toast-center-center {

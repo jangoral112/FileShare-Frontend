@@ -1,8 +1,9 @@
+@import "../../../assets/button-styles.css";
+
 .container {
   max-width: 800px;
   display: flex;
   justify-content: center;
-  margin-top: 40px;
 }
 
 .container form {
@@ -13,30 +14,11 @@
   background-color: #1F0B22;
 }
 
-.log-in-form-button {
+.basic-button {
   width: 100%;
-  color: #F9F9F9;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 18px;
-  background: none;
-  border: 2px solid #B2E6D4;
-  border-radius: 4px;
-  text-decoration: none;
-  transition-duration: 0.2s;
+  margin: 5px auto auto auto;
   padding: 5px 20px 5px 20px;
-  margin-top: 5px;
-  text-align: center;
-}
-
-.log-in-form-button:hover {
-  background-color: #ECA400;
-  border: 2px solid #040113;
-  color: #040113;
-  cursor: pointer;
-}
-
-.log-in-form-button:active {
-  filter: brightness(75%);
+  font-size: 18px;
 }
 
 .form-control {

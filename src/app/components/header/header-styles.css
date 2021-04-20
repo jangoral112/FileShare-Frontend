@@ -1,0 +1,30 @@
+@import "../../../assets/button-styles.css";
+
+header {
+  background-color: #1F0B22;
+  border-bottom: 2px solid #B2E6D4;
+  position: relative;
+  overflow: hidden;
+  top: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  font-size: 32px;
+  margin: 4px 14px 4px 14px;
+}
+
+h2:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+}
+
+h2:active {
+  filter: brightness(80%);
+}
+
+h2:focus {
+  outline: 0;
+}

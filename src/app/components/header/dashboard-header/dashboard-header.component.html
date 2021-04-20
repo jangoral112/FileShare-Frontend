@@ -1,4 +1,14 @@
-<header>
-  <h2>FileShare</h2>
+<header class="d-flex bd-highlight">
+  <h2 class="me-auto p-2 bd-highlight">FileShare</h2>
+<!--  <a class="p-2 bd-highlight">Menu</a>-->
+<!--  <div class="p-2 bd-highlight col" >-->
+    <div ngbDropdown class="p-2 bd-highlight d-inline-block" container="body" >
+      <button class="btn basic-button" id="dropdownBasic1" ngbDropdownToggle>Menu</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-content">
+        <button ngbDropdownItem class="basic-button">Profile</button>
+        <button ngbDropdownItem class="basic-button">Files</button>
+        <button ngbDropdownItem class="basic-button">Log out</button>
+      </div>
+    </div>
+<!--  </div>-->
 </header>
-

@@ -29,7 +29,7 @@ export class SessionStorageService {
     window.sessionStorage.setItem(AUTH_TOKEN, authToken);
   }
 
-  public getAuthToken() {
+  public getAuthToken(): string {
     return window.sessionStorage.getItem(AUTH_TOKEN);
   }
 

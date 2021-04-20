@@ -12,4 +12,8 @@ export class DashboardHeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  open(menu){
+    menu.openMenu();
+  }
+
 }
