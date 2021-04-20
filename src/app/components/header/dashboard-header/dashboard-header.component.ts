@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {SessionStorageService} from '../../../services/session-storage.service';
 
 @Component({
   selector: 'app-dashboard-header',
@@ -7,13 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private sessionStorageService: SessionStorageService) { }
 
   ngOnInit(): void {
   }
 
-  open(menu){
-    menu.openMenu();
+  logOut() {
+    this.sessionStorageService.clearSession();
+    this.router.navigate([{outlets: {primary: 'home' , header: 'home'}}]);
   }
-
 }
