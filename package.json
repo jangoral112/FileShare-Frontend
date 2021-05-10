@@ -4,6 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start-pl": "ng serve --configuration=pl-PL",
+    "start-en": "ng serve --configuration=en",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -17,7 +19,7 @@
     "@angular/compiler": "~11.2.9",
     "@angular/core": "~11.2.9",
     "@angular/forms": "~11.2.9",
-    "@angular/localize": "~11.2.9",
+    "@angular/localize": "^11.2.10",
     "@angular/material": "^11.2.9",
     "@angular/platform-browser": "~11.2.9",
     "@angular/platform-browser-dynamic": "~11.2.9",

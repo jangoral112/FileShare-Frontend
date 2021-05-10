@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file datatype="plaintext" original="ng2.template" source-language="en-US" target-language="pl-PL">
+    <body>
+      <trans-unit id="home.title" datatype="html">
+        <source>Welcome</source>
+        <target>Witaj</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/home/home.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home.description" datatype="html">
+        <source> FileShare is service for storing and sharing your files! <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/> Create account, upload, download and share files! </source>
+        <target> FileShare to serwis do przechowywania i udostępniania plików! <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/> Załóż konto, wysyłaj, pobieraj i udostępniaj pliki!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/home/home.component.html</context>
+          <context context-type="linenumber">5,8</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

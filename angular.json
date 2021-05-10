@@ -9,6 +9,12 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "pl-PL": "src/locale/messages.pl-PL.xlf"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -31,6 +37,14 @@
             "scripts": []
           },
           "configurations": {
+            "en": {
+              "localize": ["en"],
+              "aot": true
+            },
+            "pl-PL": {
+              "localize": ["pl-PL"],
+              "aot": true
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -38,6 +52,9 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "localize": ["en", "pl-PL"],
+              "aot": true,
+              "i18nMissingTranslation": "error",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -68,6 +85,12 @@
           "configurations": {
             "production": {
               "browserTarget": "FileShare-frontend:build:production"
+            },
+            "pl-PL": {
+              "browserTarget": "FileShare-frontend:build:pl-PL"
+            },
+            "en": {
+              "browserTarget": "FileShare-frontend:build:en"
             }
           }
         },
