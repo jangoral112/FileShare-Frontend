@@ -8,6 +8,7 @@ import {HomeHeaderComponent} from './components/header/home-header/home-header.c
 import {DashboardHeaderComponent} from './components/header/dashboard-header/dashboard-header.component';
 import { AuthGuard } from './guards/auth-guard';
 import {FileDashboardComponent} from './components/file-dashboard/file-dashboard.component';
+import {FileUploadComponent} from './components/file-upload/file-upload.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home(header:home)', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardHeaderComponent, outlet: 'header', canActivate: [AuthGuard] },
   { path: 'file-dashboard', component: FileDashboardComponent, canActivate: [AuthGuard] },
+  { path: 'file-upload', component: FileUploadComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

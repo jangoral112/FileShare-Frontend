@@ -23,6 +23,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FileDashboardComponent } from './components/file-dashboard/file-dashboard.component';
 import { FileTableComponent } from './components/files/file-table/file-table.component';
 import {AuthInterceptor} from './interceptors/auth.interceptor';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {AuthInterceptor} from './interceptors/auth.interceptor';
     LoginComponent,
     DashboardComponent,
     FileDashboardComponent,
-    FileTableComponent
+    FileTableComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,

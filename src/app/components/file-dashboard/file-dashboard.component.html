@@ -1,10 +1,10 @@
 <div>
   <h1>Files Dashboard</h1>
-  <div style="display: flex; height: max-content;">
-    <app-file-table style="width: 100%; height: inherit; min-height: 400px" [showOwner]="false"></app-file-table>
-    <div style="width: 20rem">
-      <button style="width: 16rem; margin-top: 1rem;" class="basic-button">Upload File</button>
-      <button style="width: 16rem; margin-top: 1rem;" class="basic-button">Share File</button>
+  <div class="content-wrapper">
+    <app-file-table [showOwner]="false"></app-file-table>
+    <div class="buttons-wrapper">
+      <button [routerLink]="['/file-upload']" class="basic-button">Upload File</button>
+      <button class="basic-button">Share File</button>
     </div>
   </div>
 </div>
