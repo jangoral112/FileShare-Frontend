@@ -1,0 +1,40 @@
+<div class="file-table" >
+  <table mat-table matSort [dataSource]="filesMetaDataSource">
+
+    <ng-container matColumnDef="fileName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>File Name</mat-header-cell>
+      <mat-cell *matCellDef="let fileMetaData">{{ fileMetaData.fileName }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="ownerName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Owner Name</mat-header-cell>
+      <mat-cell class="description-cell" *matCellDef="let fileMetaData">{{ fileMetaData.ownerUserName }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="ownerEmail">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Owner Email</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let fileMetaData">{{ fileMetaData.ownerEmail }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="size">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Size</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let fileMetaData">{{fileMetaData.size | number}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="uploadDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Upload Date</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let fileMetaData">{{ fileMetaData.creationDate | date: "dd-MM-yyyy" }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="publicFlag">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Public</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let fileMetaData">{{ fileMetaData.publicFileFlag }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let fileMetaData; columns: displayedColumns" ></mat-row>
+
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

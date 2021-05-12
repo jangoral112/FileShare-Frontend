@@ -3,8 +3,9 @@
     <div ngbDropdown class="p-2 bd-highlight d-inline-block" container="body" >
       <button class="btn basic-button" id="dropdownBasic1" ngbDropdownToggle>Menu</button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-content">
+        <button ngbDropdownItem class="basic-button" [routerLink]="['/dashboard']">Dashboard</button>
         <button ngbDropdownItem class="basic-button">Profile</button>
-        <button ngbDropdownItem class="basic-button">Files</button>
+        <button ngbDropdownItem class="basic-button" [routerLink]="['/file-dashboard']">Files</button>
         <button (click)="logOut()" ngbDropdownItem class="basic-button">Log out</button>
       </div>
     </div>

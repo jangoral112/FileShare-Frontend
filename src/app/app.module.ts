@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
+import { MatInputModule } from "@angular/material/input";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatSortModule } from "@angular/material/sort";
+import { MatTableModule } from "@angular/material/table";
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
@@ -15,6 +20,9 @@ import { DashboardHeaderComponent } from './components/header/dashboard-header/d
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { FileDashboardComponent } from './components/file-dashboard/file-dashboard.component';
+import { FileTableComponent } from './components/files/file-table/file-table.component';
+import {AuthInterceptor} from './interceptors/auth.interceptor';
 
 
 @NgModule({
@@ -26,7 +34,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     DashboardHeaderComponent,
     RegisterComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    FileDashboardComponent,
+    FileTableComponent
   ],
   imports: [
     BrowserModule,
@@ -38,8 +48,13 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     ToastrModule.forRoot(),
     NgbModule,
     BrowserAnimationsModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
+    MatTableModule
   ],
-  providers: [],
+  providers: [ {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,11 @@
+@import "../../../assets/button-styles.css";
+
+h1 {
+  margin-left: 40px;
+}
+
+.basic-button {
+  font-size: 1.75rem;
+  margin-right: 40px;
+  margin-left: 0;
+}

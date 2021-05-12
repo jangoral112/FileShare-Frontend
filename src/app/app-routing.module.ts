@@ -7,6 +7,7 @@ import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {HomeHeaderComponent} from './components/header/home-header/home-header.component';
 import {DashboardHeaderComponent} from './components/header/dashboard-header/dashboard-header.component';
 import { AuthGuard } from './guards/auth-guard';
+import {FileDashboardComponent} from './components/file-dashboard/file-dashboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home(header:home)', pathMatch: 'full' },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'dashboard', component: DashboardHeaderComponent, outlet: 'header', canActivate: [AuthGuard] }
+  { path: 'dashboard', component: DashboardHeaderComponent, outlet: 'header', canActivate: [AuthGuard] },
+  { path: 'file-dashboard', component: FileDashboardComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
