@@ -27,6 +27,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { FileDetailsComponent } from './components/file-details/file-details.component';
+import { FileSizePipe } from './utils/file-size.pipe';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { FileDetailsComponent } from './components/file-details/file-details.com
     FileDashboardComponent,
     FileTableComponent,
     FileUploadComponent,
-    FileDetailsComponent
+    FileDetailsComponent,
+    FileSizePipe
   ],
   imports: [
     BrowserModule,

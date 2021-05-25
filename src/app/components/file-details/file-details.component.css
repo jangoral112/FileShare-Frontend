@@ -37,6 +37,7 @@ h1 {
 }
 
 .basic-button {
-  width: 14rem;
-  font-size: 1.75rem;
+  width: 12rem;
+  font-size: 1.65rem;
+  margin-top: 5px;
 }

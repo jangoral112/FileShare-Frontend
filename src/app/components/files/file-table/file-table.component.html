@@ -20,7 +20,7 @@
 
     <ng-container matColumnDef="size">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Size</mat-header-cell>
-      <mat-cell class="duration-cell" *matCellDef="let fileMetaData">{{fileMetaData.size | number}}</mat-cell>
+      <mat-cell class="duration-cell" *matCellDef="let fileMetaData">{{fileMetaData.size | FileSize: 'auto'}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="uploadTimestamp">
