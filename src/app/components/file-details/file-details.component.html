@@ -1,1 +1,30 @@
-<p>file-details works!</p>
+<div>
+  <h1>File Details</h1>
+
+  <div class="content-wrapper">
+    <div class="data-wrapper">
+      <h2><b>File Name:</b> {{fileMetaData.fileName }}</h2>
+      <span><b>Owner:</b> {{ fileMetaData.ownerUserName }} - {{ fileMetaData.ownerEmail }}</span>
+      <span><b>File size:</b> {{ fileMetaData.size }}</span>
+      <span><b>Public:</b> {{ fileMetaData.publicFileFlag }}</span>
+      <span><b>Upload date:</b> {{ fileMetaData.uploadTimestamp | date: "dd-MM-yyyy"}}</span>
+
+      <br>
+      <span>
+        <b>File Description:</b>
+        <br>
+        {{ fileMetaData.fileDescription }}
+      </span>
+    </div>
+
+    <div class="actions">
+      <h2>Actions</h2>
+      <button class="basic-button">Delete File</button>
+      <button class="basic-button">Share File</button>
+      <button class="basic-button">Edit File</button>
+    </div>
+  </div>
+
+
+
+</div>

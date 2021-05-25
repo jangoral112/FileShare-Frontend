@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FileMetadata} from '../../models/FileMetadata';
+import {FileService} from '../../services/file.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-file-details',
@@ -8,12 +10,21 @@ import {FileMetadata} from '../../models/FileMetadata';
 })
 export class FileDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fileService: FileService, private route: ActivatedRoute) { }
 
   fileMetaData: FileMetadata;
 
   ngOnInit(): void {
-    this.fileMetaData = history.state.data;
+    if(history.state.data == undefined) {
+      this.route.params.subscribe(params => {
+        const key = params['key'];
+        this.fileService.getFileMetaDataByKey(key).subscribe( fileMetaData => {
+          this.fileMetaData = fileMetaData;
+        });
+      });
+    } else {
+      this.fileMetaData = history.state.data;
+    }
   }
 
 }

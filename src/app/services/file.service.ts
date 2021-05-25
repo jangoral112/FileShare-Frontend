@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpParams, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {FileMetadata} from '../models/FileMetadata';
 import {FileUploadMetadata} from '../models/FileUploadMetadata';
@@ -13,8 +13,15 @@ export class FileService {
 
   constructor(private http: HttpClient) { }
 
+  getFileMetaDataByKey(key: string): Observable<FileMetadata> {
+    return this.http.get<FileMetadata>(this.baseUrl + '/' + key + '/meta-data', {
+      observe: 'body',
+      responseType: 'json'
+    });
+  }
+
   getFilesMetadataByOwner(ownerEmail: string): Observable<FileMetadata[]>{
-    return this.http.get<FileMetadata[]>(this.baseUrl + '/list', {
+    return this.http.get<FileMetadata[]>(this.baseUrl + '/meta-data', {
       params: new HttpParams().set('ownerEmail', ownerEmail),
       observe: 'body',
       responseType: 'json'
