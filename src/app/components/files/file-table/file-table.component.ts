@@ -4,6 +4,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-file-table',
@@ -15,6 +16,8 @@ export class FileTableComponent implements OnInit, AfterViewInit {
   filesMetaDataSource: MatTableDataSource<FileMetaData>;
   displayedColumns: string[];
 
+  router: Router
+
   @ViewChild(MatPaginator)
   paginator: MatPaginator;
 
@@ -24,8 +27,9 @@ export class FileTableComponent implements OnInit, AfterViewInit {
   @Input()
   showOwner: boolean = true;
 
-  constructor() {
+  constructor(router: Router) {
     this.filesMetaDataSource = new MatTableDataSource();
+    this.router = router;
   }
 
   ngOnInit(): void {
@@ -47,5 +51,9 @@ export class FileTableComponent implements OnInit, AfterViewInit {
       this.filesMetaDataSource.paginator = this.paginator;
       this.filesMetaDataSource.sort = this.sort;
     })
+  }
+
+  navigateToFileDetails(fileMetaData: FileMetaData) {
+    this.router.navigate(["/file-details", fileMetaData.fileKey], {state: {data: fileMetaData}});
   }
 }

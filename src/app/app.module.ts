@@ -26,6 +26,7 @@ import {AuthInterceptor} from './interceptors/auth.interceptor';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { FileDetailsComponent } from './components/file-details/file-details.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {MatIconModule} from '@angular/material/icon';
     DashboardComponent,
     FileDashboardComponent,
     FileTableComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    FileDetailsComponent
   ],
   imports: [
     BrowserModule,

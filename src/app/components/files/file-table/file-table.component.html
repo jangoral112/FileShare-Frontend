@@ -3,7 +3,9 @@
 
     <ng-container matColumnDef="fileName">
       <mat-header-cell *matHeaderCellDef mat-sort-header>File Name</mat-header-cell>
-      <mat-cell *matCellDef="let fileMetaData">{{ fileMetaData.fileName }}</mat-cell>
+      <mat-cell *matCellDef="let fileMetaData">
+        <span style="cursor:pointer" (click)="navigateToFileDetails(fileMetaData)">{{ fileMetaData.fileName }}</span>
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="ownerName">
