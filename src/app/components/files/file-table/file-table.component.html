@@ -3,7 +3,9 @@
 
     <ng-container matColumnDef="fileName">
       <mat-header-cell *matHeaderCellDef mat-sort-header>File Name</mat-header-cell>
-      <mat-cell *matCellDef="let fileMetaData">{{ fileMetaData.fileName }}</mat-cell>
+      <mat-cell *matCellDef="let fileMetaData">
+        <span style="cursor:pointer" (click)="navigateToFileDetails(fileMetaData)">{{ fileMetaData.fileName }}</span>
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="ownerName">
@@ -21,9 +23,9 @@
       <mat-cell class="duration-cell" *matCellDef="let fileMetaData">{{fileMetaData.size | number}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="uploadDate">
+    <ng-container matColumnDef="uploadTimestamp">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Upload Date</mat-header-cell>
-      <mat-cell class="duration-cell" *matCellDef="let fileMetaData">{{ fileMetaData.creationDate | date: "dd-MM-yyyy" }}</mat-cell>
+      <mat-cell class="duration-cell" *matCellDef="let fileMetaData">{{ fileMetaData.uploadTimestamp | date: "dd-MM-yyyy" }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="publicFlag">

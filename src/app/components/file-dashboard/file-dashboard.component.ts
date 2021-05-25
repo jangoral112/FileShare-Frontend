@@ -25,6 +25,6 @@ export class FileDashboardComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    this.fileTable.setFilesMetaData(this.fileService.getFilesMetaDataByOwner(this.sessionStorageService.getEmail()));
+    this.fileTable.setFilesMetadata(this.fileService.getFilesMetadataByOwner(this.sessionStorageService.getEmail()));
   }
 }

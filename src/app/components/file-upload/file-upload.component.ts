@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FileService} from '../../services/file.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {SessionStorageService} from '../../services/session-storage.service';
-import {FileUploadMetaData} from '../../models/FileUploadMetaData';
+import {FileUploadMetadata} from '../../models/FileUploadMetadata';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 
@@ -42,7 +42,7 @@ export class FileUploadComponent implements OnInit {
   }
 
   onSubmit() {
-    let fileUploadMetaData = new FileUploadMetaData();
+    let fileUploadMetaData = new FileUploadMetadata();
     fileUploadMetaData.fileName = this.fileName;
     fileUploadMetaData.fileDescription = this.fileDescription;
     fileUploadMetaData.ownerEmail = this.ownerEmail;

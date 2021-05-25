@@ -1,4 +1,4 @@
-export class FileUploadMetaData {
+export class FileUploadMetadata {
   fileName: string;
   fileDescription: string;
   ownerEmail: string;

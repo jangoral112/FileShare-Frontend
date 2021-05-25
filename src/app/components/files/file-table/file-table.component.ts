@@ -1,9 +1,10 @@
 import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
-import { FileMetaData } from '../../../models/FileMetaData';
+import { FileMetadata } from '../../../models/FileMetadata';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-file-table',
@@ -12,8 +13,10 @@ import {Observable} from 'rxjs';
 })
 export class FileTableComponent implements OnInit, AfterViewInit {
 
-  filesMetaDataSource: MatTableDataSource<FileMetaData>;
+  filesMetaDataSource: MatTableDataSource<FileMetadata>;
   displayedColumns: string[];
+
+  router: Router
 
   @ViewChild(MatPaginator)
   paginator: MatPaginator;
@@ -24,15 +27,16 @@ export class FileTableComponent implements OnInit, AfterViewInit {
   @Input()
   showOwner: boolean = true;
 
-  constructor() {
+  constructor(router: Router) {
     this.filesMetaDataSource = new MatTableDataSource();
+    this.router = router;
   }
 
   ngOnInit(): void {
     if(this.showOwner) {
-      this.displayedColumns = ["fileName", "ownerName", "ownerEmail", "size", "uploadDate", "publicFlag"]
+      this.displayedColumns = ["fileName", "ownerName", "ownerEmail", "size", "uploadTimestamp", "publicFlag"]
     } else {
-      this.displayedColumns = ["fileName", "size", "uploadDate", "publicFlag"]
+      this.displayedColumns = ["fileName", "size", "uploadTimestamp", "publicFlag"]
     }
   }
 
@@ -41,11 +45,15 @@ export class FileTableComponent implements OnInit, AfterViewInit {
     this.filesMetaDataSource.sort = this.sort;
   }
 
-  setFilesMetaData(observable: Observable<FileMetaData[]>) {
+  setFilesMetadata(observable: Observable<FileMetadata[]>) {
     observable.subscribe(filesMetaData => {
       this.filesMetaDataSource = new MatTableDataSource(filesMetaData);
       this.filesMetaDataSource.paginator = this.paginator;
       this.filesMetaDataSource.sort = this.sort;
     })
+  }
+
+  navigateToFileDetails(fileMetaData: FileMetadata) {
+    this.router.navigate(["/file-details", fileMetaData.fileKey], {state: {data: fileMetaData}});
   }
 }
