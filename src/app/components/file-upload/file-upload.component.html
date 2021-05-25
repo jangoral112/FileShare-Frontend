@@ -1,1 +1,46 @@
-<h1>File Upload</h1>
+<div>
+  <h1>File Upload</h1>
+  <div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="fileUploadForm">
+
+      <div class="row-wrapper">
+        <div class="mb-3">
+          <label>File Attachment</label>
+          <input formControlName="file" type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+          <div class="file-upload">
+            <button mat-mini-fab color="primary" type="button" class="upload-btn" (click)="fileUpload.click()">
+              <mat-icon>attach_file</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3 ms-3">
+          <label for="fileName">File Name</label>
+          <input formControlName="fileName"  id="fileName" type="text" class="form-control" placeholder="File name">
+        </div>
+
+        <div class="mb-3 ms-3">
+          <label for="ownerEmail">File Owner Email</label>
+          <input readonly formControlName="ownerEmail"  id="ownerEmail" type="text" class="form-control" placeholder="File owner email">
+        </div>
+
+        <div class="mb-3 ms-3 checkbox-container">
+          <label for="publicFileFlag">Public File</label>
+          <input readonly formControlName="publicFileFlag"  id="publicFileFlag" type="checkbox" class="form-check-input">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="fileDescription">File Description</label>
+        <textarea formControlName="fileDescription"  id="fileDescription" type="text"
+                  class="form-control description-input" placeholder="File Description"></textarea>
+      </div>
+
+      <div class="mb-1">
+        <button class="sign-in-form-button basic-button" type="submit">Upload file</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+

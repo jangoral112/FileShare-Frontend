@@ -31,6 +31,20 @@ export class RegisterComponent implements OnInit {
     this.submitClicked = false;
   }
 
+  onSubmit() {
+    if(this.userRegistrationForm.valid) {
+      this.userService.registerUser(this.username.value, this.email.value, this.password.value)
+        .subscribe(
+          response => {
+            this.toastr.success(response.message);
+          },
+          error => {
+            this.toastr.error(error.error.message, error.status);
+          });
+    }
+    this.submitClicked = true;
+  }
+
   // tslint:disable-next-line:typedef
   get username() {
     return this.userRegistrationForm.get('username');
@@ -49,19 +63,5 @@ export class RegisterComponent implements OnInit {
   // tslint:disable-next-line:typedef
   get passwordConfirm() {
     return this.userRegistrationForm.get('passwordConfirm');
-  }
-
-  onSubmit() {
-    if(this.userRegistrationForm.valid) {
-      this.userService.registerUser(this.username.value, this.email.value, this.password.value)
-        .subscribe(
-          response => {
-          this.toastr.success(response.message);
-        },
-          error => {
-            this.toastr.error(error.error.message, error.status);
-        });
-    }
-    this.submitClicked = true;
   }
 }

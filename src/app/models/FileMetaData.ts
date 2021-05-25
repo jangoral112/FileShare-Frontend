@@ -1,4 +1,4 @@
-export interface FileMetaData {
+export class FileMetaData {
   fileName: string;
   fileDescription: string;
   fileKey: string;

@@ -41,9 +41,9 @@ export class LoginComponent implements OnInit {
           this.toastr.success(response.body.message);
           this.router.navigate([{outlets: {primary: 'dashboard' , header: 'dashboard'}}]);
         },
-          error => {
-            this.toastr.error(error.error.message, error.status);
-          }
+        error => {
+          this.toastr.error(error.error.message, error.status);
+        }
       )
     }
     this.submitClicked = true;

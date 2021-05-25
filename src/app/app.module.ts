@@ -24,6 +24,8 @@ import { FileDashboardComponent } from './components/file-dashboard/file-dashboa
 import { FileTableComponent } from './components/files/file-table/file-table.component';
 import {AuthInterceptor} from './interceptors/auth.interceptor';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     MatPaginatorModule,
     MatSortModule,
     MatProgressSpinnerModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [ {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]

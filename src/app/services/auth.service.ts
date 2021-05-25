@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {SessionStorageService} from './session-storage.service';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import {MessageResponse} from '../models/dto/MessageResponse';
 import {UserLoginRequest} from '../models/dto/UserLoginRequest';
 import {JwtHelperService} from '@auth0/angular-jwt';
-import {Observable} from 'rxjs';
+import {Observable, Subscriber} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,14 +21,20 @@ export class AuthService {
     let userLoginRequest = new UserLoginRequest(email, password);
     let responseObservable = this.http.post<MessageResponse>(this.baseUrl, userLoginRequest, {observe: 'response'});
 
-    responseObservable.subscribe(
-      response => {
-        this.sessionStorageService.saveUserEmail(email);
-        this.sessionStorageService.saveAuthToken(response.headers.get("Authorization"));
-      }
-    )
+    const responseObservableWrapper = new Observable((subscriber:Subscriber<HttpResponse<MessageResponse>>) => {
+      responseObservable.subscribe(
+        response => {
+          this.sessionStorageService.saveUserEmail(email);
+          this.sessionStorageService.saveAuthToken(response.headers.get("Authorization"));
+          subscriber.next(response);
+        },
+        error => {
+          subscriber.error(error);
+        }
+      );
+    });
 
-    return responseObservable;
+    return responseObservableWrapper;
   }
 
   public isAuthenticated(): boolean {
