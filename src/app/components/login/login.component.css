@@ -26,7 +26,7 @@
 }
 
 .form-control:focus {
-  border-color: #ECA400 !important;
+  border-color: var(--active-color) !important;
   box-shadow: 0 0 0 0.15rem rgba(236, 164, 0, 1) !important;
 }
 
@@ -35,6 +35,6 @@
   padding: 5px 5px 5px 5px;
   margin-top: 5px;
   background-color: #B10F2E;
-  border: 3px solid #040113;
-  color: #F9F9F9;
+  border: 3px solid var(--main-background-color);
+  color: var(--font-color);
 }
