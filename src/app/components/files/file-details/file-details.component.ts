@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FileMetadata} from '../../models/FileMetadata';
-import {FileService} from '../../services/file.service';
+import {FileMetadata} from '../../../models/FileMetadata';
+import {FileService} from '../../../services/file.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 

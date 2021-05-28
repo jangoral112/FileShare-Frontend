@@ -7,9 +7,10 @@ import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {HomeHeaderComponent} from './components/header/home-header/home-header.component';
 import {DashboardHeaderComponent} from './components/header/dashboard-header/dashboard-header.component';
 import { AuthGuard } from './guards/auth-guard';
-import {FilesDashboardComponent} from './components/files-dashboard/files-dashboard.component';
-import {FileUploadComponent} from './components/file-upload/file-upload.component';
-import {FileDetailsComponent} from './components/file-details/file-details.component';
+import {FilesDashboardComponent} from './components/files/files-dashboard/files-dashboard.component';
+import {FileUploadComponent} from './components/files/file-upload/file-upload.component';
+import {FileDetailsComponent} from './components/files/file-details/file-details.component';
+import {UserProfileComponent} from './components/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home(header:home)', pathMatch: 'full' },
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardHeaderComponent, outlet: 'header', canActivate: [AuthGuard] },
   { path: 'files-dashboard', component: FilesDashboardComponent, canActivate: [AuthGuard] },
   { path: 'file-upload', component: FileUploadComponent, canActivate: [AuthGuard] },
-  { path: 'file-details/:key', component: FileDetailsComponent, canActivate: [AuthGuard] }
+  { path: 'file-details/:key', component: FileDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'user/:email', component: UserProfileComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

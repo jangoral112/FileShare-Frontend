@@ -1,0 +1,17 @@
+<div>
+  <div class="user-info">
+    <div class="profile-header">
+      <h1>{{ userDetails.username }}'s profile</h1>
+      <button class="basic-button">Edit Profile</button>
+    </div>
+
+    <span>Email: {{ userDetails.email }}</span>
+    <p>Joined: {{ userDetails.creationDate | date: "dd-MM-yyyy" }}</p>
+    <p>{{ userDetails.description }}</p>
+  </div>
+
+  <h3>{{ userDetails.username }}'s public files</h3>
+  <app-file-table [showOwner]="false"></app-file-table>
+
+</div>
+

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FileService} from '../../services/file.service';
+import {FileService} from '../../../services/file.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {SessionStorageService} from '../../services/session-storage.service';
-import {FileUploadMetadata} from '../../models/FileUploadMetadata';
+import {SessionStorageService} from '../../../services/session-storage.service';
+import {FileUploadMetadata} from '../../../models/dto/FileUploadMetadata';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 

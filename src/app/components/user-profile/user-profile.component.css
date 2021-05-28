@@ -1,0 +1,14 @@
+@import "../../../assets/button-styles.css";
+
+.user-info {
+  margin-left: 40px;
+}
+
+.profile-header {
+  display: flex;
+}
+
+h3 {
+  margin-top: 20px;
+  margin-left: 40px;
+}

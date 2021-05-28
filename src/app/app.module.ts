@@ -20,14 +20,15 @@ import { DashboardHeaderComponent } from './components/header/dashboard-header/d
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { FilesDashboardComponent } from './components/files-dashboard/files-dashboard.component';
+import { FilesDashboardComponent } from './components/files/files-dashboard/files-dashboard.component';
 import { FileTableComponent } from './components/files/file-table/file-table.component';
 import {AuthInterceptor} from './interceptors/auth.interceptor';
-import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { FileUploadComponent } from './components/files/file-upload/file-upload.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import { FileDetailsComponent } from './components/file-details/file-details.component';
+import { FileDetailsComponent } from './components/files/file-details/file-details.component';
 import { FileSizePipe } from './utils/file-size.pipe';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { FileSizePipe } from './utils/file-size.pipe';
     FileTableComponent,
     FileUploadComponent,
     FileDetailsComponent,
-    FileSizePipe
+    FileSizePipe,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
