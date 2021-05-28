@@ -11,11 +11,14 @@ export class DashboardHeaderComponent implements OnInit {
 
   constructor(private router: Router, private sessionStorageService: SessionStorageService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   logOut() {
     this.sessionStorageService.clearSession();
     this.router.navigate([{outlets: {primary: 'home' , header: 'home'}}]);
+  }
+
+  navigateToUserProfile() {
+    this.router.navigate(["/user", this.sessionStorageService.getEmail()]);
   }
 }

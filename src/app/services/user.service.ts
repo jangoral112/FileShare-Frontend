@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserRegistrationRequest } from '../models/dto/UserRegistrationRequest';
 import {MessageResponse} from '../models/dto/MessageResponse';
+import {UserDetails} from '../models/UserDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,10 @@ export class UserService {
     let userRegistrationRequest = new UserRegistrationRequest(username, email, password);
 
     return this.http.post<MessageResponse>(this.baseUrl, userRegistrationRequest);
+  }
+
+  getUserData(email: string): Observable<UserDetails> {
+    let params = new HttpParams().set('email', email);
+    return this.http.get<UserDetails>(this.baseUrl, {params: params});
   }
 }

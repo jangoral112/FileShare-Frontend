@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {FileMetadata} from '../models/FileMetadata';
-import {FileUploadMetadata} from '../models/FileUploadMetadata';
+import {FileUploadMetadata} from '../models/dto/FileUploadMetadata';
 
 @Injectable({
   providedIn: 'root'

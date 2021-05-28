@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import { FileService} from '../../services/file.service';
-import { FileTableComponent } from '../files/file-table/file-table.component';
-import { SessionStorageService } from '../../services/session-storage.service';
+import { FileService} from '../../../services/file.service';
+import { FileTableComponent } from '../file-table/file-table.component';
+import { SessionStorageService } from '../../../services/session-storage.service';
 
 @Component({
   selector: 'app-file-dashboard',
