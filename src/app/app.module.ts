@@ -20,7 +20,7 @@ import { DashboardHeaderComponent } from './components/header/dashboard-header/d
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { FileDashboardComponent } from './components/file-dashboard/file-dashboard.component';
+import { FilesDashboardComponent } from './components/files-dashboard/files-dashboard.component';
 import { FileTableComponent } from './components/files/file-table/file-table.component';
 import {AuthInterceptor} from './interceptors/auth.interceptor';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
@@ -40,7 +40,7 @@ import { FileSizePipe } from './utils/file-size.pipe';
     RegisterComponent,
     LoginComponent,
     DashboardComponent,
-    FileDashboardComponent,
+    FilesDashboardComponent,
     FileTableComponent,
     FileUploadComponent,
     FileDetailsComponent,
