@@ -55,7 +55,6 @@ export class FileUploadComponent implements OnInit {
         this.router.navigate([{outlets: {primary: 'file-dashboard'}}]);
       },
       error => {
-        console.log(error);
         this.toastr.error(error.error.message, error.status);
       }
     );

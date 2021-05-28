@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardHeaderComponent, outlet: 'header', canActivate: [AuthGuard] },
-  { path: 'file-dashboard', component: FilesDashboardComponent, canActivate: [AuthGuard] },
+  { path: 'files-dashboard', component: FilesDashboardComponent, canActivate: [AuthGuard] },
   { path: 'file-upload', component: FileUploadComponent, canActivate: [AuthGuard] },
   { path: 'file-details/:key', component: FileDetailsComponent, canActivate: [AuthGuard] }
 ];

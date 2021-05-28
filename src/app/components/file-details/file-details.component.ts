@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FileMetadata} from '../../models/FileMetadata';
 import {FileService} from '../../services/file.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-file-details',
@@ -10,7 +11,8 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class FileDetailsComponent implements OnInit {
 
-  constructor(private fileService: FileService, private route: ActivatedRoute) { }
+  constructor(private fileService: FileService, private route: ActivatedRoute,
+              private router: Router, private toastr: ToastrService) { }
 
   fileMetaData: FileMetadata;
 
@@ -25,6 +27,18 @@ export class FileDetailsComponent implements OnInit {
     } else {
       this.fileMetaData = history.state.data;
     }
+  }
+
+  onDelete() {
+    this.fileService.deleteFile(this.fileMetaData.fileKey).subscribe(
+      response => {
+        this.toastr.success(response.body, "Success, file deleted");
+        this.router.navigate([{outlets: {primary: 'files-dashboard'}}]);
+      },
+      response => {
+        this.toastr.error(response.error.message, response.status);
+      }
+    );
   }
 
 }

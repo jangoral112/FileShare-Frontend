@@ -22,20 +22,16 @@ export class FileService {
     });
   }
 
-  getFilesMetadata(ownerEmail: string, privateFiles: boolean): Observable<FileMetadata[]>{
+  getFilesMetadata(ownerEmail: string, privateFiles: boolean): Observable<FileMetadata[]> {
     let params = new HttpParams();
 
     if(ownerEmail != null) {
-      console.log('-> 1');
       params = params.append('ownerEmail', ownerEmail);
     }
 
     if(privateFiles != null) {
-      console.log('-> 1');
       params = params.append('privateFiles', String(privateFiles));
     }
-
-    console.log('-> ' + params.toString());
 
     return this.http.get<FileMetadata[]>(this.baseUrl + this.metadataUrlSuffix, {
       params: params,
@@ -51,5 +47,8 @@ export class FileService {
     return this.http.post(this.baseUrl, formData, { observe: 'response', responseType: 'text' });
   }
 
-
+  deleteFile(fileKey: string): Observable<HttpResponse<string>> {
+    let params = new HttpParams().set('key', fileKey);
+    return this.http.delete(this.baseUrl, {params: params, observe: 'response', responseType: 'text'});
+  }
 }
