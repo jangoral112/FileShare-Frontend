@@ -18,15 +18,33 @@ export class FileDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     if(history.state.data == undefined) {
-      this.route.params.subscribe(params => {
-        const key = params['key'];
-        this.fileService.getFileMetaDataByKey(key).subscribe( fileMetaData => {
-          this.fileMetaData = fileMetaData;
-        });
-      });
+      this.route.params.subscribe(
+      params => {
+            const key = params['key'];
+            this.fileService.getFileMetaDataByKey(key).subscribe(
+            fileMetaData => {
+                  this.fileMetaData = fileMetaData;
+                });
+           }
+      );
     } else {
       this.fileMetaData = history.state.data;
     }
+  }
+
+  onDownload() {
+    this.fileService.downloadFile(this.fileMetaData.fileKey).subscribe(
+      response => {
+            let url = window.URL.createObjectURL(response.body);
+            let anchor = document.createElement('a');
+            anchor.download = this.fileMetaData.fileName;
+            anchor.href = url;
+            anchor.click();
+          },
+      response => {
+            this.toastr.error(response.error.message, response.status);
+          }
+    );
   }
 
   onDelete() {

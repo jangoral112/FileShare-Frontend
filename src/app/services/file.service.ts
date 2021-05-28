@@ -47,6 +47,11 @@ export class FileService {
     return this.http.post(this.baseUrl, formData, { observe: 'response', responseType: 'text' });
   }
 
+  downloadFile(fileKey: string): Observable<HttpResponse<Blob>> {
+    let params = new HttpParams().set('key', fileKey);
+    return this.http.get(this.baseUrl, {params: params, responseType: 'blob', observe: 'response'})
+  }
+
   deleteFile(fileKey: string): Observable<HttpResponse<string>> {
     let params = new HttpParams().set('key', fileKey);
     return this.http.delete(this.baseUrl, {params: params, observe: 'response', responseType: 'text'});
