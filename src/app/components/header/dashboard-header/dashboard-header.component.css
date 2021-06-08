@@ -24,6 +24,12 @@
   border-radius: 0;
 }
 
+.search-form {
+  margin: 0;
+  padding-top: 12px;
+  display: flex;
+}
+
 /*.dropdown-content .basic-button {*/
 /*  margin: 0;*/
 /*}*/

@@ -30,7 +30,6 @@ import { FileDetailsComponent } from './components/files/file-details/file-detai
 import { FileSizePipe } from './utils/file-size.pipe';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

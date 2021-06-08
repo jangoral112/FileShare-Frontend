@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {SessionStorageService} from '../../../services/session-storage.service';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard-header',
@@ -9,9 +10,15 @@ import {SessionStorageService} from '../../../services/session-storage.service';
 })
 export class DashboardHeaderComponent implements OnInit {
 
-  constructor(private router: Router, private sessionStorageService: SessionStorageService) { }
+  searchForm: FormGroup;
 
-  ngOnInit(): void { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private sessionStorageService: SessionStorageService) { }
+
+  ngOnInit(): void {
+    this.searchForm = this.formBuilder.group({
+      phrase: [null]
+    })
+  }
 
   logOut() {
     this.sessionStorageService.clearSession();
@@ -20,5 +27,13 @@ export class DashboardHeaderComponent implements OnInit {
 
   navigateToUserProfile() {
     this.router.navigate(["/user", this.sessionStorageService.getEmail()]);
+  }
+
+  onSearch() {
+
+  }
+
+  get phrase() {
+    return this.searchForm.get('phrase');
   }
 }

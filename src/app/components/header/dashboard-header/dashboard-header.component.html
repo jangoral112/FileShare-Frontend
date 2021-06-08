@@ -1,12 +1,20 @@
 <header class="d-flex bd-highlight">
   <h2 class="me-auto p-2 bd-highlight">FileShare</h2>
-    <div ngbDropdown class="p-2 bd-highlight d-inline-block" container="body" >
-      <button class="btn basic-button" id="dropdownBasic1" ngbDropdownToggle>Menu</button>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-content">
-        <button ngbDropdownItem class="basic-button" [routerLink]="['/dashboard']">Dashboard</button>
-        <button ngbDropdownItem class="basic-button" (click)="navigateToUserProfile()" >Profile</button>
-        <button ngbDropdownItem class="basic-button" [routerLink]="['/files-dashboard']">Files</button>
-        <button (click)="logOut()" ngbDropdownItem class="basic-button">Log out</button>
-      </div>
+  <form class="search-form" (ngSubmit)="onSearch()" [formGroup]="searchForm">
+    <div>
+      <input formControlName="phrase"  id="phrase" type="text" class="form-control" placeholder="Enter user name to find">
     </div>
+    <div class="mb-3">
+      <button class="log-in-form-button basic-button" type="submit">Search</button>
+    </div>
+  </form>
+  <div ngbDropdown class="p-2 bd-highlight d-inline-block" container="body" >
+    <button class="btn basic-button" id="dropdownBasic1" ngbDropdownToggle>Menu</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-content">
+      <button ngbDropdownItem class="basic-button" [routerLink]="['/dashboard']">Dashboard</button>
+      <button ngbDropdownItem class="basic-button" (click)="navigateToUserProfile()" >Profile</button>
+      <button ngbDropdownItem class="basic-button" [routerLink]="['/files-dashboard']">Files</button>
+      <button (click)="logOut()" ngbDropdownItem class="basic-button">Log out</button>
+    </div>
+  </div>
 </header>
