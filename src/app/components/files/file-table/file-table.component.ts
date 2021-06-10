@@ -56,4 +56,8 @@ export class FileTableComponent implements OnInit, AfterViewInit {
   navigateToFileDetails(fileMetaData: FileMetadata) {
     this.router.navigate(["/file-details", fileMetaData.fileKey], {state: {data: fileMetaData}});
   }
+
+  navigateToUser(fileMetaData: FileMetadata) {
+    this.router.navigate(["/user", fileMetaData.ownerEmail]);
+  }
 }

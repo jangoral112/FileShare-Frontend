@@ -10,12 +10,16 @@
 
     <ng-container matColumnDef="ownerName">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Owner Name</mat-header-cell>
-      <mat-cell class="description-cell" *matCellDef="let fileMetaData">{{ fileMetaData.ownerUserName }}</mat-cell>
+      <mat-cell *matCellDef="let fileMetaData">
+        <span style="cursor:pointer" (click)="navigateToUser(fileMetaData)">{{ fileMetaData.ownerUserName }}</span>
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="ownerEmail">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Owner Email</mat-header-cell>
-      <mat-cell class="duration-cell" *matCellDef="let fileMetaData">{{ fileMetaData.ownerEmail }}</mat-cell>
+      <mat-cell *matCellDef="let fileMetaData">
+        <span style="cursor:pointer" (click)="navigateToUser(fileMetaData)">{{ fileMetaData.ownerEmail }}</span>
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="size">

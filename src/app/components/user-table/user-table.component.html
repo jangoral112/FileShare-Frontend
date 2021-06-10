@@ -17,7 +17,7 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let userDetails; columns: displayedColumns" ></mat-row>
+    <mat-row style="cursor:pointer" (click)="navigateToUser(userDetails)" *matRowDef="let userDetails; columns: displayedColumns" ></mat-row>
 
   </table>
 
