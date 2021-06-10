@@ -30,6 +30,7 @@ export class DashboardHeaderComponent implements OnInit {
   }
 
   onSearch() {
+    this.router.navigate(["user-search-result"], {queryParams: {phrase: this.phrase.value}});
 
   }
 

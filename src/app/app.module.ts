@@ -29,6 +29,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { FileDetailsComponent } from './components/files/file-details/file-details.component';
 import { FileSizePipe } from './utils/file-size.pipe';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserSearchResultComponent } from './components/user-search-result/user-search-result.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     FileUploadComponent,
     FileDetailsComponent,
     FileSizePipe,
-    UserProfileComponent
+    UserProfileComponent,
+    UserSearchResultComponent
   ],
   imports: [
     BrowserModule,
