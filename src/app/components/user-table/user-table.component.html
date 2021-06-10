@@ -1,0 +1,25 @@
+<div class="user-table" >
+  <table mat-table matSort [dataSource]="userDetailsDataSource">
+
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Username</mat-header-cell>
+      <mat-cell class="description-cell" *matCellDef="let userDetails">{{ userDetails.username }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let userDetails">{{ userDetails.email }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="joinDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Join Date</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let userDetails">{{ userDetails.creationDate | date: "dd-MM-yyyy" }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let userDetails; columns: displayedColumns" ></mat-row>
+
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

@@ -30,6 +30,7 @@ import { FileDetailsComponent } from './components/files/file-details/file-detai
 import { FileSizePipe } from './utils/file-size.pipe';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserSearchResultComponent } from './components/user-search-result/user-search-result.component';
+import { UserTableComponent } from './components/user-table/user-table.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { UserSearchResultComponent } from './components/user-search-result/user-
     FileDetailsComponent,
     FileSizePipe,
     UserProfileComponent,
-    UserSearchResultComponent
+    UserSearchResultComponent,
+    UserTableComponent
   ],
   imports: [
     BrowserModule,

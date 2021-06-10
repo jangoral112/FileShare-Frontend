@@ -18,6 +18,8 @@ export class DashboardHeaderComponent implements OnInit {
     this.searchForm = this.formBuilder.group({
       phrase: [null]
     })
+
+    this.router.routeReuseStrategy.shouldReuseRoute = () => { return false; }
   }
 
   logOut() {
