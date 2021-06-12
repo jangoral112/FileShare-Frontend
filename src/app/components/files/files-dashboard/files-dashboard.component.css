@@ -4,22 +4,34 @@ h1 {
   margin-left: 40px;
 }
 
+#upload-button {
+  font-size: 1.50rem;
+  margin-left: 40px;
+  width: 14rem;
+  margin-top: 0.75rem;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+}
+
+.table-wrapper {
+  display: flex;
+}
+
 app-file-table {
   width: 100%;
   height: inherit;
   min-height: 400px;
 }
 
-.content-wrapper {
-  display: flex;
-  height: max-content;
-}
-
-.buttons-wrapper {
+.table-switch-buttons-wrapper {
   width: 20rem;
 }
 
-.basic-button {
+.table-switch-buttons-wrapper .basic-button {
   font-size: 1.75rem;
   margin-right: 40px;
   margin-left: 0;

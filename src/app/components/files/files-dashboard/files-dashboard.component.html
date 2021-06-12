@@ -1,11 +1,16 @@
 <div>
   <h1>Files Dashboard</h1>
   <div class="content-wrapper">
-    <app-file-table [showOwner]="false"></app-file-table>
-    <div class="buttons-wrapper">
-      <button [routerLink]="['/file-upload']" class="basic-button">Upload File</button>
-      <button class="basic-button">Share File</button>
+    <button [routerLink]="['/file-upload']" class="basic-button" id="upload-button">Upload File</button>
+    <div class="table-wrapper">
+      <app-file-table [showOwner]="false"></app-file-table>
+      <div class="table-switch-buttons-wrapper">
+        <button class="basic-button">Your Files</button>
+        <button class="basic-button">Shared Files</button>
+        <button class="basic-button">Receipted Files</button>
+      </div>
     </div>
+
   </div>
 </div>
 
