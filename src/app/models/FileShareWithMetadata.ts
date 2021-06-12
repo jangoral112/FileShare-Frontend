@@ -1,5 +1,13 @@
 import {FileShareWithMetadataResponse} from './dto/FileShareWithMetadataResponse';
+import {FileMetadata} from './FileMetadata';
 
-export class FileShareWithMetadata extends FileShareWithMetadataResponse {
+export class FileShareWithMetadata {
 
+  recipientEmail: string;
+
+  recipientUsername: string;
+
+  shareTimestamp: Date;
+
+  fileMetadata: FileMetadata;
 }

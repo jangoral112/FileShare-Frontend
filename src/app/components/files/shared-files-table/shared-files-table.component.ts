@@ -35,9 +35,9 @@ export class SharedFilesTableComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     if(this.mode == SharedFilesTableMode.RECIPIENT_MODE) {
-      this.displayedColumns = ["fileName", "ownerName", "ownerEmail", "shareTimestamp", "size"]
+      this.displayedColumns = ["fileName", "ownerUsername", "ownerEmail", "shareTimestamp", "size"]
     } else if(this.mode == SharedFilesTableMode.OWNER_MODE) {
-      this.displayedColumns = ["fileName", "recipientName", "recipientEmail", "shareTimestamp", "size"]
+      this.displayedColumns = ["fileName", "recipientUsername", "recipientEmail", "shareTimestamp", "size"]
     }
   }
 
@@ -51,7 +51,7 @@ export class SharedFilesTableComponent implements OnInit, AfterViewInit {
       this.fileSharesWithMetadataSource = new MatTableDataSource(filesMetaData);
       this.fileSharesWithMetadataSource.paginator = this.paginator;
       this.fileSharesWithMetadataSource.sort = this.sort;
-    })
+    });
   }
 
   navigateToFileDetails(fileShareWithMetadata: FileShareWithMetadata) {

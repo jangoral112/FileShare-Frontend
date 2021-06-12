@@ -10,11 +10,11 @@
       </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="recipientName">
+    <ng-container matColumnDef="recipientUsername">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Recipient Name</mat-header-cell>
       <mat-cell *matCellDef="let fileShareWithMetaData">
         <span style="cursor:pointer" (click)="navigateToUser(fileShareWithMetaData.recipientEmail)">
-          {{ fileShareWithMetaData.recipientName }}
+          {{ fileShareWithMetaData.recipientUsername }}
         </span>
       </mat-cell>
     </ng-container>
@@ -28,7 +28,7 @@
       </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="ownerName">
+    <ng-container matColumnDef="ownerUsername">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Owner Name</mat-header-cell>
       <mat-cell *matCellDef="let fileShareWithMetaData">
         <span style="cursor:pointer" (click)="navigateToUser(fileShareWithMetaData.fileMetadata.ownerEmail)">

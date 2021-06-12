@@ -4,6 +4,8 @@ import {FileTableComponent} from '../file-table/file-table.component';
 import {SessionStorageService} from '../../../services/session-storage.service';
 import { FileDashboardMode } from './FileDashboardMode';
 import {SharedFilesTableMode} from '../shared-files-table/SharedFilesTableMode';
+import {FileShareService} from '../../../services/file-share.service';
+import {SharedFilesTableComponent} from '../shared-files-table/shared-files-table.component';
 
 @Component({
   selector: 'app-file-dashboard',
@@ -12,18 +14,27 @@ import {SharedFilesTableMode} from '../shared-files-table/SharedFilesTableMode';
 })
 export class FilesDashboardComponent implements OnInit, AfterViewInit {
 
-  @ViewChild(FileTableComponent)
-  fileTable: FileTableComponent;
+  @ViewChild('userFiles')
+  userFilesTable: FileTableComponent;
+
+  @ViewChild('sharedFiles')
+  sharedFilesTable: SharedFilesTableComponent;
+
+  @ViewChild('receiptedFiles')
+  receiptedFilesTable: SharedFilesTableComponent;
 
   fileService: FileService;
+
+  fileShareService: FileShareService;
 
   sessionStorageService: SessionStorageService;
 
   fileDashboardMode: FileDashboardMode;
 
-  constructor(fileService: FileService, sessionStorageService: SessionStorageService) {
+  constructor(fileService: FileService, fileShareService: FileShareService, sessionStorageService: SessionStorageService) {
     this.fileService = fileService;
     this.sessionStorageService = sessionStorageService;
+    this.fileShareService = fileShareService;
   }
 
   ngOnInit(): void {
@@ -31,27 +42,37 @@ export class FilesDashboardComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.fileTable.setFilesMetadata(this.fileService.getFilesMetadata(this.sessionStorageService.getEmail(), true));
+    this.changeDashboardModeToUserFiles()
   }
 
-  setDashboardModeToUserFiles() {
+  changeDashboardModeToUserFiles() {
     this.fileDashboardMode = FileDashboardMode.USER_FILES;
+    this.userFilesTable.setFilesMetadata(
+      this.fileService.getFilesMetadata(this.sessionStorageService.getEmail(), true)
+    );
   }
 
   isDashboardModeUserFiles(): boolean {
     return this.fileDashboardMode == FileDashboardMode.USER_FILES;
   }
 
-  setDashboardModeToSharedFiles() {
+  changeDashboardModeToSharedFiles() {
     this.fileDashboardMode = FileDashboardMode.SHARED_FILES;
+    console.log(this.sharedFilesTable);
+    this.sharedFilesTable.setFileSharesWithMetadata(
+      this.fileShareService.getFileSharesWithMetadata(this.sessionStorageService.getEmail())
+    );
   }
 
   isDashboardModeSharedFiles(): boolean {
     return this.fileDashboardMode == FileDashboardMode.SHARED_FILES;
   }
 
-  setDashboardModeToReceiptedFiles() {
+  changeDashboardModeToReceiptedFiles() {
     this.fileDashboardMode = FileDashboardMode.RECEIPTED_FILES;
+    this.receiptedFilesTable.setFileSharesWithMetadata(
+      this.fileShareService.getReceiptedFileSharesWithMetadata(this.sessionStorageService.getEmail())
+    );
   }
 
   isDashboardModeReceiptedFiles(): boolean {

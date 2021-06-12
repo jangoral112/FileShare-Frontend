@@ -4,9 +4,9 @@ export class FileShareWithMetadataResponse {
 
   recipientEmail: string;
 
-  recipientName: string;
+  recipientUsername: string;
 
   shareTimestamp: Date;
 
-  fileMetadata: FileMetadata;
+  fileMetadataResponse: FileMetadata;
 }
