@@ -1,0 +1,5 @@
+export enum FileDashboardMode {
+  USER_FILES = 'USER_FILES',
+  SHARED_FILES = 'SHARED_FILES',
+  RECEIPTED_FILES = 'RECEIPTED_FILES'
+}

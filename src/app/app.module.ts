@@ -31,6 +31,7 @@ import { FileSizePipe } from './utils/file-size.pipe';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserSearchResultComponent } from './components/user-search-result/user-search-result.component';
 import { UserTableComponent } from './components/user-table/user-table.component';
+import { SharedFilesTableComponent } from './components/files/shared-files-table/shared-files-table.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { UserTableComponent } from './components/user-table/user-table.component
     FileSizePipe,
     UserProfileComponent,
     UserSearchResultComponent,
-    UserTableComponent
+    UserTableComponent,
+    SharedFilesTableComponent
   ],
   imports: [
     BrowserModule,

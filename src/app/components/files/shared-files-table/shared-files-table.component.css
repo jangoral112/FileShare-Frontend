@@ -1,0 +1,64 @@
+.file-share-table {
+  border: 2px solid var(--border-color);
+  margin: 10px 40px 10px 40px;
+}
+
+.mat-table {
+  width: 100%;
+  background-color: var(--secondary-background-color);
+}
+
+.mat-paginator {
+  background-color: var(--secondary-background-color);
+}
+
+.mat-header-cell {
+  font-size: 1.1rem;
+  color: var(--font-color);
+}
+
+.mat-cell {
+  font-size: 1rem;
+  color: var(--font-color);
+}
+
+::ng-deep .mat-sort-header-arrow {
+  color: var(--font-color);
+}
+
+::ng-deep .mat-select-arrow {
+  color: var(--font-color);
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: var(--font-color);
+}
+
+.mat-paginator, ::ng-deep .mat-paginator-page-size .mat-select-trigger {
+  font-size: 1rem;
+  color: var(--font-color);
+}
+
+::ng-deep .mat-select-value {
+  color: var(--font-color);
+}
+
+::ng-deep .mat-icon-button.mat-button-disabled.mat-button-disabled {
+  color: rgba(249,249,249,.50);
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: var(--active-color)
+}
+
+::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: var(--active-color);
+}
+
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: var(--main-background-color);
+}
+
+mat-row, mat-header-row{
+  border-bottom-color: var(--border-color);
+}

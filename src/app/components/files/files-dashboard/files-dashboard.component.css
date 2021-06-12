@@ -21,7 +21,7 @@ h1 {
   display: flex;
 }
 
-app-file-table {
+.displayed-table {
   width: 100%;
   height: inherit;
   min-height: 400px;

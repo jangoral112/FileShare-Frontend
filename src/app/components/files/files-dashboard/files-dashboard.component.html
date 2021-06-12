@@ -3,11 +3,13 @@
   <div class="content-wrapper">
     <button [routerLink]="['/file-upload']" class="basic-button" id="upload-button">Upload File</button>
     <div class="table-wrapper">
-      <app-file-table [showOwner]="false"></app-file-table>
+      <app-file-table class="displayed-table" *ngIf="isDashboardModeUserFiles()" [showOwner]="false"></app-file-table>
+      <app-shared-files-table class="displayed-table" *ngIf="isDashboardModeSharedFiles()" [mode]="getSharedFilesTableMode()"></app-shared-files-table>
+      <app-shared-files-table class="displayed-table" *ngIf="isDashboardModeReceiptedFiles()" [mode]="getReceiptedFilesTableMode()"></app-shared-files-table>
       <div class="table-switch-buttons-wrapper">
-        <button class="basic-button">Your Files</button>
-        <button class="basic-button">Shared Files</button>
-        <button class="basic-button">Receipted Files</button>
+        <button class="basic-button" (click)="setDashboardModeToUserFiles()">Your Files</button>
+        <button class="basic-button" (click)="setDashboardModeToSharedFiles()">Shared Files</button>
+        <button class="basic-button" (click)="setDashboardModeToReceiptedFiles()">Receipted Files</button>
       </div>
     </div>
 

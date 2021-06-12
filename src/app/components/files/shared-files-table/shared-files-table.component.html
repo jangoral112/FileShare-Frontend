@@ -1,0 +1,70 @@
+<div class="file-share-table" >
+  <table mat-table matSort [dataSource]="fileSharesWithMetadataSource">
+
+    <ng-container matColumnDef="fileName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>File Name</mat-header-cell>
+      <mat-cell *matCellDef="let fileShareWithMetaData">
+        <span style="cursor:pointer" (click)="navigateToFileDetails(fileShareWithMetaData)">
+          {{ fileShareWithMetaData.fileMetadata.fileName }}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="recipientName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Recipient Name</mat-header-cell>
+      <mat-cell *matCellDef="let fileShareWithMetaData">
+        <span style="cursor:pointer" (click)="navigateToUser(fileShareWithMetaData.recipientEmail)">
+          {{ fileShareWithMetaData.recipientName }}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="recipientEmail">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Recipient Email</mat-header-cell>
+      <mat-cell *matCellDef="let fileShareWithMetaData">
+        <span style="cursor:pointer" (click)="navigateToUser(fileShareWithMetaData.recipientEmail)">
+          {{ fileShareWithMetaData.recipientEmail }}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="ownerName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Owner Name</mat-header-cell>
+      <mat-cell *matCellDef="let fileShareWithMetaData">
+        <span style="cursor:pointer" (click)="navigateToUser(fileShareWithMetaData.fileMetadata.ownerEmail)">
+          {{ fileShareWithMetaData.fileMetadata.ownerUserName }}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="ownerEmail">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Owner Email</mat-header-cell>
+      <mat-cell *matCellDef="let fileShareWithMetaData">
+        <span style="cursor:pointer" (click)="navigateToUser(fileShareWithMetaData.fileMetadata.ownerEmail)">
+          {{ fileShareWithMetaData.fileMetadata.ownerEmail }}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="shareTimestamp">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Share Date</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let fileShareWithMetaData">
+        {{ fileShareWithMetaData.shareTimestamp | date: "dd-MM-yyyy" }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="size">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Size</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let fileShareWithMetaData">
+        {{ fileShareWithMetaData.fileMetadata.size | FileSize: 'auto' }}
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="this.displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let fileShareWithMetaData; columns: this.displayedColumns" ></mat-row>
+
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+
