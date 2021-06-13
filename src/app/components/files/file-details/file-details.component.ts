@@ -3,6 +3,7 @@ import {FileMetadata} from '../../../models/FileMetadata';
 import {FileService} from '../../../services/file.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {SessionStorageService} from '../../../services/session-storage.service';
 
 @Component({
   selector: 'app-file-details',
@@ -12,9 +13,10 @@ import {ToastrService} from 'ngx-toastr';
 export class FileDetailsComponent implements OnInit {
 
   constructor(private fileService: FileService, private route: ActivatedRoute,
-              private router: Router, private toastr: ToastrService) { }
+              private router: Router, private toastr: ToastrService,
+              private sessionStorageService: SessionStorageService) { }
 
-  fileMetaData: FileMetadata;
+  fileMetadata: FileMetadata;
 
   ngOnInit(): void {
     if(history.state.data == undefined) {
@@ -23,21 +25,25 @@ export class FileDetailsComponent implements OnInit {
             const key = params['key'];
             this.fileService.getFileMetaDataByKey(key).subscribe(
             fileMetaData => {
-                  this.fileMetaData = fileMetaData;
+                  this.fileMetadata = fileMetaData;
                 });
            }
       );
     } else {
-      this.fileMetaData = history.state.data;
+      this.fileMetadata = history.state.data;
     }
   }
 
+  isFileOwner(): boolean {
+    return this.fileMetadata.ownerEmail == this.sessionStorageService.getEmail();
+  }
+
   onDownload() {
-    this.fileService.downloadFile(this.fileMetaData.fileKey).subscribe(
+    this.fileService.downloadFile(this.fileMetadata.fileKey).subscribe(
       response => {
             let url = window.URL.createObjectURL(response.body);
             let anchor = document.createElement('a');
-            anchor.download = this.fileMetaData.fileName;
+            anchor.download = this.fileMetadata.fileName;
             anchor.href = url;
             anchor.click();
           },
@@ -48,7 +54,7 @@ export class FileDetailsComponent implements OnInit {
   }
 
   onDelete() {
-    this.fileService.deleteFile(this.fileMetaData.fileKey).subscribe(
+    this.fileService.deleteFile(this.fileMetadata.fileKey).subscribe(
       response => {
         this.toastr.success(response.body, "Success, file deleted");
         this.router.navigate([{outlets: {primary: 'files-dashboard'}}]);

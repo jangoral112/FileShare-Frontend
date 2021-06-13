@@ -3,26 +3,26 @@
 
   <div class="content-wrapper">
     <div class="data-wrapper">
-      <h2><b>File Name:</b> {{fileMetaData.fileName }}</h2>
-      <span><b>Owner:</b> {{ fileMetaData.ownerUserName }} - {{ fileMetaData.ownerEmail }}</span>
-      <span><b>File size:</b> {{ fileMetaData.size | FileSize: 'auto' }}</span>
-      <span><b>Public:</b> {{ fileMetaData.publicFileFlag }}</span>
-      <span><b>Upload date:</b> {{ fileMetaData.uploadTimestamp | date: "dd-MM-yyyy"}}</span>
+      <h2><b>File Name:</b> {{fileMetadata.fileName }}</h2>
+      <span><b>Owner:</b> {{ fileMetadata.ownerUsername }} - {{ fileMetadata.ownerEmail }}</span>
+      <span><b>File size:</b> {{ fileMetadata.size | FileSize: 'auto' }}</span>
+      <span><b>Public:</b> {{ fileMetadata.publicFileFlag }}</span>
+      <span><b>Upload date:</b> {{ fileMetadata.uploadTimestamp | date: "dd-MM-yyyy"}}</span>
 
       <br>
       <span>
         <b>File Description:</b>
         <br>
-        {{ fileMetaData.fileDescription }}
+        {{ fileMetadata.fileDescription }}
       </span>
     </div>
 
     <div class="actions">
       <h2>Actions</h2>
       <button class="basic-button" (click)="onDownload()">Download File</button>
-      <button class="basic-button">Share File</button>
-      <button class="basic-button">Edit File</button>
-      <button class="basic-button" (click)="onDelete()">Delete File</button>
+      <button *ngIf="isFileOwner()" class="basic-button">Share File</button>
+      <button *ngIf="isFileOwner()" class="basic-button">Edit File</button>
+      <button *ngIf="isFileOwner()" class="basic-button" (click)="onDelete()">Delete File</button>
     </div>
   </div>
 
