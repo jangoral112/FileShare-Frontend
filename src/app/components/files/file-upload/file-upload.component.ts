@@ -50,7 +50,6 @@ export class FileUploadComponent implements OnInit {
 
     this.fileService.upload(this.file, fileUploadMetaData).subscribe(
       response => {
-        console.log(response);
         this.toastr.success(response.body, "Success");
         this.router.navigate([{outlets: {primary: 'file-dashboard'}}]);
       },

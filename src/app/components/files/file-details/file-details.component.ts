@@ -6,6 +6,7 @@ import {ToastrService} from 'ngx-toastr';
 import {SessionStorageService} from '../../../services/session-storage.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {FileShareService} from '../../../services/file-share.service';
 
 @Component({
   selector: 'app-file-details',
@@ -21,7 +22,7 @@ export class FileDetailsComponent implements OnInit {
   constructor(private fileService: FileService, private route: ActivatedRoute,
               private router: Router, private toastr: ToastrService,
               private sessionStorageService: SessionStorageService, private modalService: NgbModal,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder, private fileShareService: FileShareService) { }
 
   ngOnInit(): void {
     if(history.state.data == undefined) {
@@ -78,7 +79,23 @@ export class FileDetailsComponent implements OnInit {
   }
 
   onShare() {
-
+    this.fileShareService.postFileShare(
+      this.sessionStorageService.getEmail(),
+      this.recipientEmail,
+      this.fileMetadata.fileKey
+    ).subscribe(
+      next => {
+        this.toastr.success(next.body, "Success");
+        this.modalService.dismissAll()
+      },
+      error => {
+        console.log(error)
+        this.toastr.error("Failed to share file", "Error");
+      }
+    );
   }
 
+  get recipientEmail() {
+    return this.fileShareForm.get('recipientEmail').value;
+  }
 }

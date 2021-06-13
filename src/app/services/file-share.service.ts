@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpParams, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {FileShareWithMetadata} from '../models/FileShareWithMetadata';
-import {FileMetadata} from '../models/FileMetadata';
 import {map} from 'rxjs/operators';
 import {FileShareWithMetadataResponse} from '../models/dto/FileShareWithMetadataResponse';
+import {FileShareRequest} from '../models/dto/FileShareRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,12 @@ export class FileShareService {
   ownerSuffix = '/owner';
 
   constructor(private http: HttpClient) { }
+
+  postFileShare(ownerEmail: string, recipientEmail: string, fileKey: string): Observable<HttpResponse<string>> {
+    let fileShareRequest = new FileShareRequest(ownerEmail, recipientEmail, fileKey);
+
+    return this.http.post(this.baseUrl, fileShareRequest, {observe: 'response', responseType: 'text'});
+  }
 
   getReceiptedFileSharesWithMetadata(recipientEmail: string): Observable<FileShareWithMetadata[]> {
     let params = new HttpParams();
