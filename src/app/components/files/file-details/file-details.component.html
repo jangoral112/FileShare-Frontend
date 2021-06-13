@@ -17,10 +17,38 @@
       </span>
     </div>
 
+    <ng-template #shareFormModal let-modal>
+      <div class="modal-content">
+
+        <div class="modal-header mx-3">
+          <h2 class="modal-title" id="modal-basic-title">File Sharing</h2>
+          <button type="button" class="basic-button" (click)="modal.dismiss('Cross click')">
+            X
+          </button>
+        </div>
+
+        <div class="modal-body">
+            <form (ngSubmit)="onShare()" [formGroup]="fileShareForm">
+
+              <div class="mb-3 mx-3">
+                <label for="recipientEmail">Recipient Email</label>
+                <input formControlName="recipientEmail"  id="recipientEmail" type="text" class="form-control" placeholder="Recipient Email">
+              </div>
+
+              <div class="mb-1 mx-3">
+                <button class="sign-in-form-button basic-button" type="submit">Share File</button>
+              </div>
+            </form>
+        </div>
+
+
+      </div>
+    </ng-template>
+
     <div class="actions">
       <h2>Actions</h2>
       <button class="basic-button" (click)="onDownload()">Download File</button>
-      <button *ngIf="isFileOwner()" class="basic-button">Share File</button>
+      <button *ngIf="isFileOwner()" class="basic-button" (click)="openShareFormModal(shareFormModal)">Share File</button>
       <button *ngIf="isFileOwner()" class="basic-button">Edit File</button>
       <button *ngIf="isFileOwner()" class="basic-button" (click)="onDelete()">Delete File</button>
     </div>

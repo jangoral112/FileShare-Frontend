@@ -4,6 +4,8 @@ import {FileService} from '../../../services/file.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {SessionStorageService} from '../../../services/session-storage.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-file-details',
@@ -12,11 +14,14 @@ import {SessionStorageService} from '../../../services/session-storage.service';
 })
 export class FileDetailsComponent implements OnInit {
 
+  fileMetadata: FileMetadata;
+
+  fileShareForm: FormGroup;
+
   constructor(private fileService: FileService, private route: ActivatedRoute,
               private router: Router, private toastr: ToastrService,
-              private sessionStorageService: SessionStorageService) { }
-
-  fileMetadata: FileMetadata;
+              private sessionStorageService: SessionStorageService, private modalService: NgbModal,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     if(history.state.data == undefined) {
@@ -63,6 +68,17 @@ export class FileDetailsComponent implements OnInit {
         this.toastr.error(response.error.message, response.status);
       }
     );
+  }
+
+  openShareFormModal(shareForm) {
+    this.fileShareForm = this.formBuilder.group( {
+      recipientEmail: [null]
+    });
+    this.modalService.open(shareForm, {size: 'sm'});
+  }
+
+  onShare() {
+
   }
 
 }

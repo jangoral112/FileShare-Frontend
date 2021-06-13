@@ -43,3 +43,31 @@ h1 {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+.modal-content {
+  background-color: var(--secondary-background-color);
+  border: 2px solid var(--border-color);
+  width: 24rem;
+}
+
+.modal-header .basic-button {
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;
+  margin-right: 0;
+}
+
+.modal-body label {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.modal-body .basic-button {
+  width: 100%;
+  margin: 0;
+}
+
+.modal-body .form-control:focus {
+  border-color: var(--active-color) !important;
+  box-shadow: 0 0 0 0.15rem rgba(236, 164, 0, 1) !important;
+}
