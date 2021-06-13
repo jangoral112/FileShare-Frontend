@@ -32,6 +32,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { UserSearchResultComponent } from './components/user-search-result/user-search-result.component';
 import { UserTableComponent } from './components/user-table/user-table.component';
 import { SharedFilesTableComponent } from './components/files/shared-files-table/shared-files-table.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { SharedFilesTableComponent } from './components/files/shared-files-table
     UserProfileComponent,
     UserSearchResultComponent,
     UserTableComponent,
-    SharedFilesTableComponent
+    SharedFilesTableComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,

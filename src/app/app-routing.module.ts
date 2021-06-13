@@ -12,6 +12,7 @@ import {FileUploadComponent} from './components/files/file-upload/file-upload.co
 import {FileDetailsComponent} from './components/files/file-details/file-details.component';
 import {UserProfileComponent} from './components/user-profile/user-profile.component';
 import {UserSearchResultComponent} from './components/user-search-result/user-search-result.component';
+import {AdminPanelComponent} from './components/admin-panel/admin-panel.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home(header:home)', pathMatch: 'full' },
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'file-upload', component: FileUploadComponent, canActivate: [AuthGuard] },
   { path: 'file-details/:key', component: FileDetailsComponent, canActivate: [AuthGuard] },
   { path: 'user/:email', component: UserProfileComponent, canActivate: [AuthGuard] },
-  { path: 'user-search-result', component: UserSearchResultComponent, canActivate: [AuthGuard] }
+  { path: 'user-search-result', component: UserSearchResultComponent, canActivate: [AuthGuard] },
+  { path: 'admin-panel', component: AdminPanelComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

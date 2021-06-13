@@ -37,7 +37,6 @@ export class SessionStorageService {
   public setAuthorities(authorities: string[]) {
     window.sessionStorage.removeItem(AUTHORITIES)
     window.sessionStorage.setItem(AUTHORITIES, authorities.join(" "))
-    console.log(authorities);
   }
 
   public getAuthorities(): string[] {
