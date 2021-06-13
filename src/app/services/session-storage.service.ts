@@ -3,6 +3,7 @@ import {withIdentifier} from 'codelyzer/util/astQuery';
 
 const EMAIL = "email";
 const AUTH_TOKEN = "authToken";
+const AUTHORITIES = 'authorities'
 
 @Injectable({
   providedIn: 'root'
@@ -33,4 +34,13 @@ export class SessionStorageService {
     return window.sessionStorage.getItem(AUTH_TOKEN);
   }
 
+  public setAuthorities(authorities: string[]) {
+    window.sessionStorage.removeItem(AUTHORITIES)
+    window.sessionStorage.setItem(AUTHORITIES, authorities.join(" "))
+    console.log(authorities);
+  }
+
+  public getAuthorities(): string[] {
+    return window.sessionStorage.getItem(AUTHORITIES).split(" ");
+  }
 }

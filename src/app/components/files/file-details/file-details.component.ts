@@ -7,6 +7,7 @@ import {SessionStorageService} from '../../../services/session-storage.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {FileShareService} from '../../../services/file-share.service';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-file-details',
@@ -22,7 +23,8 @@ export class FileDetailsComponent implements OnInit {
   constructor(private fileService: FileService, private route: ActivatedRoute,
               private router: Router, private toastr: ToastrService,
               private sessionStorageService: SessionStorageService, private modalService: NgbModal,
-              private formBuilder: FormBuilder, private fileShareService: FileShareService) { }
+              private formBuilder: FormBuilder, private fileShareService: FileShareService,
+              private authService: AuthService) { }
 
   ngOnInit(): void {
     if(history.state.data == undefined) {
@@ -42,6 +44,10 @@ export class FileDetailsComponent implements OnInit {
 
   isFileOwner(): boolean {
     return this.fileMetadata.ownerEmail == this.sessionStorageService.getEmail();
+  }
+
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
   }
 
   onDownload() {
@@ -80,7 +86,7 @@ export class FileDetailsComponent implements OnInit {
 
   onShare() {
     this.fileShareService.postFileShare(
-      this.sessionStorageService.getEmail(),
+      this.fileMetadata.ownerEmail,
       this.recipientEmail,
       this.fileMetadata.fileKey
     ).subscribe(

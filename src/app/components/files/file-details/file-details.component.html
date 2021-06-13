@@ -48,9 +48,9 @@
     <div class="actions">
       <h2>Actions</h2>
       <button class="basic-button" (click)="onDownload()">Download File</button>
-      <button *ngIf="isFileOwner()" class="basic-button" (click)="openShareFormModal(shareFormModal)">Share File</button>
-      <button *ngIf="isFileOwner()" class="basic-button">Edit File</button>
-      <button *ngIf="isFileOwner()" class="basic-button" (click)="onDelete()">Delete File</button>
+      <button *ngIf="isFileOwner() || isAdmin()" class="basic-button" (click)="openShareFormModal(shareFormModal)">Share File</button>
+      <button *ngIf="isFileOwner() || isAdmin()" class="basic-button">Edit File</button>
+      <button *ngIf="isFileOwner() || isAdmin()" class="basic-button" (click)="onDelete()">Delete File</button>
     </div>
   </div>
 
