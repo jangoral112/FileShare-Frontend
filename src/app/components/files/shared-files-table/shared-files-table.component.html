@@ -1,6 +1,17 @@
 <div class="file-share-table" >
   <table mat-table matSort [dataSource]="fileSharesWithMetadataSource">
 
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Selection</mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selection.toggle(row) : null"
+                      [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+
     <ng-container matColumnDef="fileName">
       <mat-header-cell *matHeaderCellDef mat-sort-header>File Name</mat-header-cell>
       <mat-cell *matCellDef="let fileShareWithMetaData">

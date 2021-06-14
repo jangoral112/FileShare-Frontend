@@ -59,6 +59,21 @@
   color: var(--main-background-color);
 }
 
-mat-row, mat-header-row{
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+  border-color: var(--border-color);
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+  opacity: 0.03 !important;
+
+  background-color: var(--active-color);
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: var(--active-color);
+}
+
+
+mat-row, mat-header-row {
   border-bottom-color: var(--border-color);
 }

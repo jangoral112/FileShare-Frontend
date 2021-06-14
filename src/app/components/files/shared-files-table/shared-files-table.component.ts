@@ -6,6 +6,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {SharedFilesTableMode} from './SharedFilesTableMode';
 import {Observable} from 'rxjs';
+import {SelectionModel} from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-shared-files-table',
@@ -15,6 +16,7 @@ import {Observable} from 'rxjs';
 export class SharedFilesTableComponent implements OnInit, AfterViewInit {
 
   fileSharesWithMetadataSource: MatTableDataSource<FileShareWithMetadata>;
+  selection = new SelectionModel<FileShareWithMetadata>(false, [])
   displayedColumns: string[];
 
   router: Router;
@@ -39,7 +41,7 @@ export class SharedFilesTableComponent implements OnInit, AfterViewInit {
     } else if(this.mode == SharedFilesTableMode.OWNER_MODE) {
       this.displayedColumns = ["fileName", "recipientUsername", "recipientEmail", "shareTimestamp", "size"]
     } else if(this.mode == SharedFilesTableMode.ADMIN_MODE) {
-      this.displayedColumns = ["fileName", "ownerUsername", "ownerEmail", "recipientUsername", "recipientEmail", "shareTimestamp", "size"]
+      this.displayedColumns = ["select", "fileName", "ownerUsername", "ownerEmail", "recipientUsername", "recipientEmail", "shareTimestamp", "size"]
     }
   }
 
@@ -72,5 +74,9 @@ export class SharedFilesTableComponent implements OnInit, AfterViewInit {
 
   navigateToUser(userEmail: string) {
     this.router.navigate(["/user", userEmail]);
+  }
+
+  getSelected(): FileShareWithMetadata {
+    return this.selection.selected[0]
   }
 }

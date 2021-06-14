@@ -33,6 +33,7 @@ import { UserSearchResultComponent } from './components/user-search-result/user-
 import { UserTableComponent } from './components/user-table/user-table.component';
 import { SharedFilesTableComponent } from './components/files/shared-files-table/shared-files-table.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
     MatProgressSpinnerModule,
     MatTableModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule
   ],
   providers: [ {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]

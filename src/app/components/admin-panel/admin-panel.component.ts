@@ -7,6 +7,7 @@ import {SharedFilesTableMode} from '../files/shared-files-table/SharedFilesTable
 import {FileService} from '../../services/file.service';
 import {FileShareService} from '../../services/file-share.service';
 import {UserService} from '../../services/user.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-panel',
@@ -26,7 +27,8 @@ export class AdminPanelComponent implements OnInit, AfterViewInit {
   @ViewChild('users')
   userTable: UserTableComponent;
 
-  constructor(private fileService: FileService, private fileShareService: FileShareService, private userService: UserService) { }
+  constructor(private fileService: FileService, private fileShareService: FileShareService,
+              private userService: UserService, private toastr: ToastrService) { }
 
   ngOnInit(): void { }
 
@@ -88,4 +90,15 @@ export class AdminPanelComponent implements OnInit, AfterViewInit {
     return SharedFilesTableMode.ADMIN_MODE;
   }
 
+  deleteSelectedFileShare() {
+    let fileShare = this.shareTable.getSelected();
+    this.fileShareService.deleteFileShare(fileShare.fileMetadata.fileKey, fileShare.recipientEmail).subscribe(
+      next => {
+        this.toastr.success(next.body);
+      },
+      error => {
+        this.toastr.error(error.error.message, error.status);
+      }
+    )
+  }
 }

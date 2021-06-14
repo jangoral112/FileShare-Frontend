@@ -9,6 +9,12 @@
   <button class="basic-button" (click)="changeAdminPanelModeToShares()">Shares</button>
   <button class="basic-button" (click)="changeAdminPanelModeToUsers()">Users</button>
 
+  <button class="basic-button"
+          [style.display]="isAdminPanelModeShares() ? 'inline' : 'none'"
+          (click)="deleteSelectedFileShare()">
+    Delete Selected
+  </button>
+
   <app-file-table #files
                   class="displayed-table"
                   [style.display]="isAdminPanelModeFiles() ? 'block' : 'none'"

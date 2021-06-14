@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {FileShareWithMetadata} from '../models/FileShareWithMetadata';
 import {map} from 'rxjs/operators';
 import {FileShareWithMetadataResponse} from '../models/dto/FileShareWithMetadataResponse';
 import {FileShareRequest} from '../models/dto/FileShareRequest';
+import {DeleteFileShareRequest} from '../models/dto/DeleteFileShareRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,11 @@ export class FileShareService {
     let fileShareRequest = new FileShareRequest(ownerEmail, recipientEmail, fileKey);
 
     return this.http.post(this.baseUrl, fileShareRequest, {observe: 'response', responseType: 'text'});
+  }
+
+  deleteFileShare(fileKey: string, recipientEmail: string): Observable<HttpResponse<string>> {
+    let deleteFileShareRequest = new DeleteFileShareRequest(fileKey, recipientEmail);
+    return this.http.request('delete', this.baseUrl, {body: deleteFileShareRequest, observe: 'response', responseType: 'text'})
   }
 
   getFileSharesWithMetadata(): Observable<FileShareWithMetadata[]> {
