@@ -38,6 +38,8 @@ export class SharedFilesTableComponent implements OnInit, AfterViewInit {
       this.displayedColumns = ["fileName", "ownerUsername", "ownerEmail", "shareTimestamp", "size"]
     } else if(this.mode == SharedFilesTableMode.OWNER_MODE) {
       this.displayedColumns = ["fileName", "recipientUsername", "recipientEmail", "shareTimestamp", "size"]
+    } else if(this.mode == SharedFilesTableMode.ADMIN_MODE) {
+      this.displayedColumns = ["fileName", "ownerUsername", "ownerEmail", "recipientUsername", "recipientEmail", "shareTimestamp", "size"]
     }
   }
 
@@ -52,6 +54,13 @@ export class SharedFilesTableComponent implements OnInit, AfterViewInit {
       this.fileSharesWithMetadataSource.paginator = this.paginator;
       this.fileSharesWithMetadataSource.sort = this.sort;
     });
+  }
+
+  setFilter(filter: string) {
+    this.fileSharesWithMetadataSource.filterPredicate = (data: FileShareWithMetadata, filter: string) => {
+      return data.fileMetadata.fileName.trim().toLocaleLowerCase().indexOf(filter) != -1
+    }
+    this.fileSharesWithMetadataSource.filter = filter.trim().toLocaleLowerCase();
   }
 
   navigateToFileDetails(fileShareWithMetadata: FileShareWithMetadata) {

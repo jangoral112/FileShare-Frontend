@@ -3,11 +3,11 @@ import {FileMetadata} from './FileMetadata';
 
 export class FileShareWithMetadata {
 
-  recipientEmail: string;
+  constructor(
+    public recipientEmail:string,
+    public recipientUsername: string,
+    public shareTimestamp: Date,
+    public fileMetadata: FileMetadata
+  ) {}
 
-  recipientUsername: string;
-
-  shareTimestamp: Date;
-
-  fileMetadata: FileMetadata;
 }

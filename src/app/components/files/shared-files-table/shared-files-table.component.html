@@ -32,7 +32,7 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>Owner Name</mat-header-cell>
       <mat-cell *matCellDef="let fileShareWithMetaData">
         <span style="cursor:pointer" (click)="navigateToUser(fileShareWithMetaData.fileMetadata.ownerEmail)">
-          {{ fileShareWithMetaData.fileMetadata.ownerUserName }}
+          {{ fileShareWithMetaData.fileMetadata.ownerUsername }}
         </span>
       </mat-cell>
     </ng-container>

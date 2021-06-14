@@ -1,0 +1,23 @@
+@import "../../../assets/button-styles.css";
+
+h1 {
+  margin-left: 40px;
+}
+
+mat-form-field {
+  margin-left: 40px;
+  color: var(--font-color);
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
+  color: var(--font-color) !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-label{
+  color: var(--font-color) !important;
+}
+
+.basic-button {
+  margin-right: 0;
+}
+

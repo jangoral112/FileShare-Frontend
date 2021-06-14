@@ -25,6 +25,10 @@ export class UserService {
     return this.http.get<UserDetails>(this.baseUrl + '/' + email);
   }
 
+  getUsersDetails(): Observable<UserDetails[]> {
+    return this.http.get<UserDetails[]>(this.baseUrl);
+  }
+
   getUsersDetailsByUsernameByPhrase(phrase: string): Observable<UserDetails[]> {
     let params = new HttpParams();
     params = params.append('phrase', phrase);

@@ -60,7 +60,7 @@ export class FilesDashboardComponent implements OnInit, AfterViewInit {
     this.fileDashboardMode = FileDashboardMode.SHARED_FILES;
     console.log(this.sharedFilesTable);
     this.sharedFilesTable.setFileSharesWithMetadata(
-      this.fileShareService.getFileSharesWithMetadata(this.sessionStorageService.getEmail())
+      this.fileShareService.getOwnedFileSharesWithMetadata(this.sessionStorageService.getEmail())
     );
   }
 

@@ -1,1 +1,30 @@
-<p>admin-panel works!</p>
+<div>
+  <h1>Admin Panel</h1>
+
+  <mat-form-field>
+    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+
+  <button class="basic-button" (click)="changeAdminPanelModeToFiles()">Files</button>
+  <button class="basic-button" (click)="changeAdminPanelModeToShares()">Shares</button>
+  <button class="basic-button" (click)="changeAdminPanelModeToUsers()">Users</button>
+
+  <app-file-table #files
+                  class="displayed-table"
+                  [style.display]="isAdminPanelModeFiles() ? 'block' : 'none'"
+                  [showOwner]="true">
+  </app-file-table>
+
+  <app-shared-files-table #shares
+                          class="displayed-table"
+                          [style.display]="isAdminPanelModeShares() ? 'block' : 'none'"
+                          [mode]="getAdminSharedFilesTableMode()">
+  </app-shared-files-table>
+
+  <app-user-table #users
+                  class="displayed-table"
+                  [style.display]="isAdminPanelModeUsers() ? 'block' : 'none'">
+
+  </app-user-table>
+
+</div>

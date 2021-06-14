@@ -53,6 +53,10 @@ export class FileTableComponent implements OnInit, AfterViewInit {
     })
   }
 
+  setFilter(filter: string) {
+    this.filesMetaDataSource.filter = filter.trim().toLocaleLowerCase();
+  }
+
   navigateToFileDetails(fileMetaData: FileMetadata) {
     this.router.navigate(["/file-details", fileMetaData.fileKey], {state: {data: fileMetaData}});
   }

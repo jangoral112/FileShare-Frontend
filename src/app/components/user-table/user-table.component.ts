@@ -46,6 +46,10 @@ export class UserTableComponent implements OnInit, AfterViewInit {
     })
   }
 
+  setFilter(filter: string) {
+    this.userDetailsDataSource.filter = filter.trim().toLocaleLowerCase();
+  }
+
   navigateToUser(userDetails: UserDetails) {
     this.router.navigate(["/user", userDetails.email]);
   }

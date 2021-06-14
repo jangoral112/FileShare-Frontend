@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {FileShareWithMetadata} from '../models/FileShareWithMetadata';
@@ -25,6 +25,13 @@ export class FileShareService {
     return this.http.post(this.baseUrl, fileShareRequest, {observe: 'response', responseType: 'text'});
   }
 
+  getFileSharesWithMetadata(): Observable<FileShareWithMetadata[]> {
+
+    let response = this.http.get<FileShareWithMetadataResponse[]>(this.baseUrl);
+
+    return this.fileSharesWithMetadataResponseMappingPipe(response);
+  }
+
   getReceiptedFileSharesWithMetadata(recipientEmail: string): Observable<FileShareWithMetadata[]> {
     let params = new HttpParams();
     params = params.append('recipientEmail', recipientEmail);
@@ -36,7 +43,7 @@ export class FileShareService {
     return this.fileSharesWithMetadataResponseMappingPipe(response);
   }
 
-  getFileSharesWithMetadata(ownerEmail: string): Observable<FileShareWithMetadata[]> {
+  getOwnedFileSharesWithMetadata(ownerEmail: string): Observable<FileShareWithMetadata[]> {
     let params = new HttpParams();
     params = params.append('ownerEmail', ownerEmail);
 
@@ -53,12 +60,12 @@ export class FileShareService {
       map((fileSharesWithMetadataResponse: FileShareWithMetadataResponse[]) => {
         return fileSharesWithMetadataResponse.map(
           (fileShareWithMetadataResponse: FileShareWithMetadataResponse) => {
-            let fileShareWithMetadata = new FileShareWithMetadata();
-            fileShareWithMetadata.recipientEmail = fileShareWithMetadataResponse.recipientEmail;
-            fileShareWithMetadata.recipientUsername = fileShareWithMetadataResponse.recipientUsername;
-            fileShareWithMetadata.shareTimestamp = fileShareWithMetadataResponse.shareTimestamp;
-            fileShareWithMetadata.fileMetadata = fileShareWithMetadataResponse.fileMetadataResponse;
-            return fileShareWithMetadata;
+            return new FileShareWithMetadata(
+              fileShareWithMetadataResponse.recipientEmail,
+              fileShareWithMetadataResponse.recipientUsername,
+              fileShareWithMetadataResponse.shareTimestamp,
+              fileShareWithMetadataResponse.fileMetadataResponse
+            );
           });
       }));
   }
