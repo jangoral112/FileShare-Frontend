@@ -2,7 +2,8 @@
   <div class="user-info">
     <div class="profile-header">
       <h1>{{ userDetails.username }}'s profile</h1>
-      <button class="basic-button">Edit Profile</button>
+      <button *ngIf="isAdmin()" class="basic-button" (click)="onDeleteUser()">Delete User</button>
+      <button *ngIf="isAdmin()" class="basic-button">Edit Authorities</button>
     </div>
 
     <span>Email: {{ userDetails.email }}</span>

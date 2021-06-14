@@ -21,6 +21,10 @@ export class UserService {
     return this.http.post<MessageResponse>(this.baseUrl, userRegistrationRequest);
   }
 
+  deleteUser(userEmail:string): Observable<string> {
+    return this.http.delete(this.baseUrl + "/" + userEmail, {responseType: 'text'});
+  }
+
   getUserData(email: string): Observable<UserDetails> {
     return this.http.get<UserDetails>(this.baseUrl + '/' + email);
   }
