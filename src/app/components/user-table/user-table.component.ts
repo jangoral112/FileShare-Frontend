@@ -5,6 +5,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-user-table',
@@ -24,7 +25,7 @@ export class UserTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort)
   sort: MatSort;
 
-  constructor(router: Router) {
+  constructor(router: Router, modalService: NgbModal) {
     this.userDetailsDataSource = new MatTableDataSource<UserDetails>();
     this.router = router;
   }

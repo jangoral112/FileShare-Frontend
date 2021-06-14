@@ -7,6 +7,8 @@ import {FileService} from '../../services/file.service';
 import {SessionStorageService} from '../../services/session-storage.service';
 import {AuthService} from '../../services/auth.service';
 import {ToastrService} from 'ngx-toastr';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-user-profile',
@@ -14,6 +16,8 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit, AfterViewInit {
+
+  editUsersAuthoritiesForm: FormGroup
 
   @ViewChild(FileTableComponent)
   fileTable: FileTableComponent;
@@ -23,7 +27,8 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
   constructor(private route: ActivatedRoute, private userService: UserService,
               private fileService: FileService, private sessionStorageService: SessionStorageService,
               private authService: AuthService, private toastr: ToastrService,
-              private router: Router) { }
+              private router: Router, private formBuilder: FormBuilder,
+              private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(
@@ -57,4 +62,33 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
     );
   }
 
+  openEditAuthoritiesFormModal(editAuthoritiesFormModal) {
+    this.userService.getUserRoles(this.userDetails.email).subscribe(
+      next => {
+        this.editUsersAuthoritiesForm = this.formBuilder.group( {
+          adminRole: [next.indexOf("ROLE_ADMIN") > -1]
+        });
+
+        this.modalService.open(editAuthoritiesFormModal, {size: 'sm'});
+      }
+    );
+  }
+
+  onEdit() {
+
+    let roles = ["ROLE_USER"]
+
+    if(this.editUsersAuthoritiesForm.get('adminRole').value == true) {
+      roles.push('ROLE_ADMIN')
+    }
+
+    this.userService.patchUserRoles(this.userDetails.email, roles).subscribe(
+      next => {
+        this.toastr.success("Successfully edited user's authorities");
+      },
+      error => {
+        this.toastr.error(error.error.message);
+      }
+    );
+  }
 }

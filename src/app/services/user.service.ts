@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpParams, HttpResponse} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserRegistrationRequest } from '../models/dto/UserRegistrationRequest';
 import {MessageResponse} from '../models/dto/MessageResponse';
 import {UserDetails} from '../models/UserDetails';
+import {PatchUserRolesRequest} from '../models/dto/PatchUserRolesRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +38,14 @@ export class UserService {
     let params = new HttpParams();
     params = params.append('phrase', phrase);
     return this.http.get<UserDetails[]>(this.baseUrl, {params: params});
+  }
+
+  getUserRoles(email: string): Observable<string[]> {
+    return this.http.get<string[]>(this.baseUrl + '/role/' + email);
+  }
+
+  patchUserRoles(email: string, roles: string[]) {
+    let patchUserRolesRequest = new PatchUserRolesRequest(roles);
+    return this.http.patch(this.baseUrl + '/role/' + email, patchUserRolesRequest, {observe: 'body'});
   }
 }

@@ -1,9 +1,37 @@
 <div>
+
+  <ng-template #editUsersAuthorities let-modal>
+    <div class="modal-content">
+
+      <div class="modal-header mx-3">
+        <h2 class="modal-title" id="modal-basic-title">Edit User's Authorities</h2>
+        <button type="button" class="basic-button" (click)="modal.dismiss('Cross click')">
+          X
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form (ngSubmit)="onEdit()" [formGroup]="editUsersAuthoritiesForm">
+
+          <div class="mb-3 ms-3 checkbox-container">
+            <label for="adminRole">Admin Authority</label>
+            <input readonly formControlName="adminRole"  id="adminRole" type="checkbox" class="form-check-input">
+          </div>
+
+          <div class="mb-1 mx-3">
+            <button class="sign-in-form-button basic-button" type="submit">Confirm</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </ng-template>
+
   <div class="user-info">
     <div class="profile-header">
       <h1>{{ userDetails.username }}'s profile</h1>
       <button *ngIf="isAdmin()" class="basic-button" (click)="onDeleteUser()">Delete User</button>
-      <button *ngIf="isAdmin()" class="basic-button">Edit Authorities</button>
+      <button *ngIf="isAdmin()" class="basic-button" (click)="openEditAuthoritiesFormModal(editUsersAuthorities)">Edit Authorities</button>
     </div>
 
     <span>Email: {{ userDetails.email }}</span>

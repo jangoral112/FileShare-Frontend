@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.fileTable.setFilesMetadata(this.fileService.getFilesMetadata(null, true));
+    this.fileTable.setFilesMetadata(this.fileService.getFilesMetadata(null, false));
   }
 
 }
